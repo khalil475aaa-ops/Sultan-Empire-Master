@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULTAN GLOBAL EMPIRE - MASTER BACKUP</title>
+    <style>
+        /* CSS: Green & White Empire Theme */
+        body { margin: 0; background: #002b21; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .login-screen { background: white; color: #004d40; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 0 50px rgba(0,230,118,0.4); border: 4px solid #00e676; width: 380px; z-index: 100; }
+        .diamond { font-size: 60px; margin-bottom: 10px; animation: shine 2s infinite; }
+        @keyframes shine { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        input { width: 85%; padding: 15px; margin: 20px 0; border: 2px solid #004d40; border-radius: 10px; font-size: 18px; text-align: center; font-weight: bold; }
+        .btn-main { background: #004d40; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; }
+        
+        /* Dashboard Styling (Hidden by Default) */
+        #main-dashboard { display: none; width: 100%; height: 100%; text-align: center; overflow-y: auto; background: #004d40; }
+        .header { background: #002b21; padding: 30px; border-bottom: 4px solid #00e676; }
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; }
+        .card { background: white; color: #004d40; padding: 25px; border-radius: 15px; text-align: left; position: relative; }
+        .status-tag { position: absolute; top: 10px; right: 10px; background: #25d366; color: white; padding: 3px 8px; border-radius: 5px; font-size: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="lock-page" class="login-screen">
+    <div class="diamond">💎</div>
+    <h2 style="margin:0;">SULTAN EMPIRE</h2>
+    <p>Admin Security Layer</p>
+    <input type="password" id="adminPass" placeholder="Secret Key">
+    <button class="btn-main" onclick="unlock()">UNLOCK GLOBAL SYSTEM</button>
+</div>
+
+<div id="main-dashboard">
+    <div class="header">
+        <h1>🏛️ SULTAN GLOBAL EMPIRE</h1>
+        <p>24/7 Universal AI Robot | Gemini & Islam 360 Integrated</p>
+    </div>
+
+    <div class="module-grid">
+        <div class="card">
+            <span class="status-tag">ACTIVE</span>
+            <h3>🌐 Universal Voice Bridge</h3>
+            <p>All Global Languages (Chinese, English, etc.) ↔ Pure Urdu Voice Translation.</p>
+        </div>
+
+        <div class="card">
+            <span class="status-tag">CONNECTED</span>
+            <h3>📖 Zahid Chhipa Engine</h3>
+            <p>Direct Access to Islam 360 Database. Quran & Hadith Auto-References.</p>
+        </div>
+
+        <div class="card">
+            <span class="status-tag">RUNNING</span>
+            <h3>🤖 Gemini AI Auto-Reply</h3>
+            <p>Sultan is resting. AI is answering the world based on Empire rules.</p>
+        </div>
+    </div>
+    
+    <div style="padding: 20px; color: #00e676; font-size: 14px;">
+        System Status: Online | Cost: Free | Quality: Ek Number (Original)
+    </div>
+</div>
+
+<script>
+    function unlock() {
+        const p = document.getElementById("adminPass").value;
+        if(p === "SULTAN786") { // Sultan, ye aapka secret password hai
+            document.getElementById("lock-page").style.display = "none";
+            document.getElementById("main-dashboard").style.display = "block";
+            console.log("Sultan Global Empire: Fully Activated.");
+        } else {
+            alert("Ghalat Password! System Locked.");
+        }
+    }
+</script>
+
+</body>
+</html>
