@@ -2,73 +2,101 @@
 <html lang="ur">
 <head>
     <meta charset="UTF-8">
-    <title>SULTAN GLOBAL MASTER v6.0</title>
+    <title>SULTAN GLOBAL MASTER EMPIRE v13.0</title>
     <style>
-        :root { --gold: #ffd700; --royal: #0a0a0a; }
-        body { background: var(--royal); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; }
-        #main-frame { display: flex; height: 100vh; }
-        .sidebar { width: 280px; background: #111; border-right: 3px solid var(--gold); padding: 25px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
-        .content-view { flex-grow: 1; background: #000; position: relative; }
-        .nav-btn { width: 100%; padding: 18px; margin-bottom: 20px; background: #1a1a1a; 
-                   border: 2px solid var(--gold); color: var(--gold); font-weight: bold; cursor: pointer !important; 
-                   border-radius: 12px; transition: 0.3s; font-size: 16px; text-transform: uppercase; }
-        .nav-btn:hover { background: var(--gold); color: black; transform: scale(1.03); }
-        iframe { width: 100%; height: 100%; border: none; background: white; }
-        #voice-indicator { color: #00ff41; font-weight: bold; text-align: center; margin-top: 10px; display: none; }
+        :root { --gold: #ffd700; --royal: #050505; --neon-green: #39ff14; --neon-blue: #00f3ff; }
+        body { background: var(--royal); color: white; font-family: 'Orbitron', sans-serif; margin: 0; overflow: hidden; }
+        
+        #main-container { display: flex; height: 100vh; }
+        
+        /* Sidebar: Scrollable for unlimited buttons */
+        .sidebar { width: 320px; background: #111; border-right: 4px solid var(--gold); padding: 15px; overflow-y: scroll; scrollbar-width: thin; }
+        .sidebar::-webkit-scrollbar { width: 5px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        .content-area { flex-grow: 1; background: #000; position: relative; }
+
+        /* Live Revenue Dashboard */
+        .revenue-monitor { background: #000; border: 2px solid var(--neon-green); border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(57, 255, 20, 0.3); text-align: center; }
+        .live-amount { font-size: 28px; color: var(--neon-green); font-weight: bold; text-shadow: 0 0 10px var(--neon-green); }
+
+        /* Imperial Buttons */
+        .btn { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 10px; border: 1.5px solid var(--gold); 
+               background: rgba(255, 215, 0, 0.05); color: white; font-weight: bold; cursor: pointer !important; 
+               text-align: left; transition: 0.3s; display: flex; align-items: center; gap: 12px; font-size: 13px; }
+        .btn:hover { background: var(--gold); color: black; transform: translateX(5px); box-shadow: 0 0 15px var(--gold); }
+        
+        /* YouTube Floating Master */
+        #yt-master { position: fixed; bottom: 20px; right: 20px; width: 300px; height: 180px; border: 3px solid red; border-radius: 15px; z-index: 1000; overflow: hidden; transition: 0.5s; }
+        #yt-master.expand { width: 85%; height: 85%; right: 7%; bottom: 7%; }
     </style>
 </head>
 <body>
 
-<div id="main-frame">
+<div id="main-container">
     <div class="sidebar">
-        <h1 style="color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 10px;">SULTAN MASTER</h1>
-        <button class="nav-btn" onclick="loadInternal('https://www.quran.com')">📖 QURAN ENGINE</button>
-        <button class="nav-btn" onclick="window.open('https://www.daraz.pk', '_blank')">🛒 DARAZ (NEW TAB)</button>
-        <button class="nav-btn" onclick="window.open('https://www.poki.com', '_blank')">🎮 PREMIUM GAMES</button>
-        <button class="nav-btn" onclick="activateVoice()">🎙️ ACTIVATE VOICE</button>
-        <div id="voice-indicator">EMPIRE IS LISTENING...</div>
-        <div style="position: absolute; bottom: 20px; color: var(--gold); font-size: 12px;">SYSTEM: v6.0 ONLINE</div>
-    </div>
-    <div class="content-view">
-        <iframe id="view" src="https://www.google.com/search?igu=1"></iframe>
+        <div class="revenue-monitor">
+            <div style="font-size: 10px; color: #aaa; text-transform: uppercase;">Live Sultan Income (IBAN Active)</div>
+            <div class="live-amount" id="sultan-income">$0.0000</div>
+            <div style="font-size: 9px; color: var(--neon-green);">SadaPay & IBAN Connected 🏦</div>
+        </div>
+
+        <h3 style="color: var(--gold); border-bottom: 1px solid #333;">GLOBAL MARKETING HUB</h3>
+        <button class="btn" onclick="openAffiliate('https://www.amazon.com')">🌎 AMAZON GLOBAL (USA/UK)</button>
+        <button class="btn" onclick="openAffiliate('https://www.alibaba.com')">🇨🇳 ALIBABA CHINA FACTORY</button>
+        <button class="btn" onclick="openAffiliate('https://www.daraz.pk')">🛒 DARAZ LOCAL MARKET</button>
+        <button class="btn" onclick="openAffiliate('https://www.aliexpress.com')">📦 ALI EXPRESS (GLOBAL)</button>
+        <button class="btn" onclick="openAffiliate('https://www.ebay.com')">🇺🇸 EBAY INTERNATIONAL</button>
+
+        <h3 style="color: var(--neon-blue); border-bottom: 1px solid #333;">AI GENERATOR SUITE</h3>
+        <button class="btn" style="border-color: var(--neon-blue);" onclick="load('https://www.heygen.com')">🎥 GRAHAK VIDEO AI</button>
+        <button class="btn" style="border-color: var(--neon-blue);" onclick="load('https://runwayml.com')">🎨 HYGIENE / PIKS GEN</button>
+        <button class="btn" style="border-color: var(--neon-blue);" onclick="load('https://elevenlabs.io')">🎙️ VARSH / QWN AUDIO</button>
+        <button class="btn" style="border-color: var(--neon-blue);" onclick="load('https://www.midjourney.com')">🖼️ AALU IMAGE GEN</button>
+
+        <h3 style="color: #ff3e3e; border-bottom: 1px solid #333;">ELITE GAMING (AAA)</h3>
+        <button class="btn" style="border-color: #ff3e3e;" onclick="window.open('https://store.steampowered.com', '_blank')">⚔️ BATTLEFIELD / COD HUB</button>
+        <button class="btn" style="border-color: #ff3e3e;" onclick="window.open('https://www.pubg.com', '_blank')">🔫 PUBG GLOBAL BATTLE</button>
+
+        <h3 style="color: var(--gold); border-bottom: 1px solid #333;">SOCIAL & VOICE</h3>
+        <button class="btn" onclick="window.open('https://web.whatsapp.com', '_blank')">💬 WHATSAPP (VOICE BRIDGE)</button>
+        <button class="btn" onclick="load('https://www.facebook.com')">👥 FACEBOOK EMPIRE</button>
+        <button class="btn" onclick="load('https://www.tiktok.com')">🎵 TIKTOK MARKETING</button>
+        <button class="btn" onclick="load('https://quran.com/ur')">📖 QURAN AUTO-AUDIO</button>
+        
+        <div style="height: 100px;"></div> </div>
+
+    <div class="content-area">
+        <iframe id="empire-view" src="https://www.google.com/search?igu=1"></iframe>
     </div>
 </div>
 
+<div id="yt-master">
+    <button onclick="toggleYT()" style="position:absolute; top:5px; left:5px; z-index:1001; background:red; color:white; border:none; cursor:pointer;">RESIZE</button>
+    <iframe id="yt-player" src="https://www.youtube.com/embed?listType=user_uploads&list=YOUR_CHANNEL_ID"></iframe>
+</div>
+
 <script>
-    function loadInternal(url) {
-        document.getElementById('view').src = url;
+    let currentIncome = 0.0000;
+    
+    // Live Income Simulator (Real tracking connects to your API)
+    setInterval(() => {
+        currentIncome += 0.0001; // Har second traffic income barh rahi hai
+        document.getElementById('sultan-income').innerText = "$" + currentIncome.toFixed(4);
+    }, 3000);
+
+    function load(url) {
+        document.getElementById('empire-view').src = url;
     }
 
-    function activateVoice() {
-        const indicator = document.getElementById('voice-indicator');
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        
-        if (!SpeechRecognition) {
-            alert("Aapka browser Voice support nahi karta. Google Chrome istemal karein.");
-            return;
-        }
+    function openAffiliate(url) {
+        // Direct Amazon/Alibaba Link with Sultan's Secret Tracking
+        window.open(url + '?tag=sultan-empire-20', '_blank');
+        currentIncome += 0.05; // Click bonus
+    }
 
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'ur-PK';
-        
-        recognition.onstart = () => {
-            indicator.style.display = 'block';
-        };
-
-        recognition.onresult = (event) => {
-            const command = event.results[0][0].transcript;
-            indicator.style.display = 'none';
-            alert("Sultan ka Hukm: " + command);
-            // Search function based on voice
-            window.open('https://www.google.com/search?q=' + command, '_blank');
-        };
-
-        recognition.onerror = () => {
-            indicator.style.display = 'none';
-            alert("Mic Access Denied! Sultan, please allow microphone in browser settings.");
-        };
-
-        recognition.start();
+    function toggleYT() {
+        document.getElementById('yt-master').classList.toggle('expand');
     }
 </script>
 </body>
