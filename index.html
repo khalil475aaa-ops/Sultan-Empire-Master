@@ -3,185 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN GLOBAL MASTER EMPIRE - PRE-APP EDITION</title>
+    <title>SULTAN HYBRID EMPIRE</title>
     <style>
-        /* CSS KO DETAIL MEIN LIKHA HAI TAAKE DESIGN HEAVY RAHE */
-        :root { 
-            --gold: #ffd700; 
-            --royal-black: #050505; 
-            --neon-green: #39ff14; 
-            --ai-blue: #00f3ff;
-            --game-red: #ff3e3e;
-            --social-pink: #fe2c55;
-        }
+        :root { --gold: #ffd700; --black: #050505; }
+        body { margin: 0; background: var(--black); color: white; font-family: sans-serif; overflow: hidden; }
 
-        body { 
-            background-color: var(--royal-black); 
-            color: #ffffff; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            padding: 0;
-            overflow: hidden; 
-        }
-
-        #main-wrapper { 
-            display: flex; 
-            height: 100vh; 
-            width: 100vw;
-        }
-
-        /* SIDEBAR EXPANSION */
+        /* PC SIDEBAR (Sirf badi screen par dikhega) */
         .sidebar { 
-            width: 350px; 
-            background: linear-gradient(180deg, #111 0%, #000 100%); 
-            border-right: 5px solid var(--gold); 
-            padding: 20px; 
-            overflow-y: scroll; 
-            box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+            width: 300px; background: #111; border-right: 3px solid var(--gold); 
+            height: 100vh; padding: 20px; overflow-y: auto; display: block;
         }
 
-        .sidebar::-webkit-scrollbar { width: 8px; }
-        .sidebar::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-
-        /* REVENUE MONITOR SECTION */
-        .revenue-monitor { 
-            background: #000; 
-            border: 3px double var(--neon-green); 
-            border-radius: 15px; 
-            padding: 20px; 
-            margin-bottom: 25px; 
-            text-align: center;
-            box-shadow: inset 0 0 15px rgba(57, 255, 20, 0.2);
+        /* MOBILE BUTTONS (Sirf mobile par dikhega) */
+        .mobile-nav { 
+            display: none; background: #111; border-bottom: 2px solid var(--gold); 
+            padding: 10px; overflow-x: auto; white-space: nowrap; 
         }
 
-        .live-amount { 
-            font-size: 35px; 
-            color: var(--neon-green); 
-            font-weight: 900; 
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--neon-green);
-        }
-
-        /* BUTTON STYLING (NO SHORTCUTS) */
-        .category-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            color: #888;
-            margin: 20px 0 10px 5px;
-            letter-spacing: 2px;
-            border-left: 3px solid var(--gold);
-            padding-left: 10px;
-        }
+        /* INCOME METER */
+        .revenue-box { background: #000; border: 1px solid #39ff14; padding: 10px; text-align: center; margin-bottom: 15px; }
+        .amount { color: #39ff14; font-size: 28px; font-weight: bold; }
 
         .btn { 
-            width: 100%; 
-            padding: 16px; 
-            margin-bottom: 12px; 
-            border-radius: 12px; 
-            border: 2px solid #333; 
-            background: #1a1a1a; 
-            color: white; 
-            font-size: 14px;
-            font-weight: bold; 
-            cursor: pointer; 
-            text-align: left; 
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            width: 100%; padding: 12px; margin-bottom: 10px; background: #222; 
+            border: 1px solid var(--gold); color: white; cursor: pointer; text-align: left;
         }
 
-        .btn:hover { 
-            border-color: var(--gold);
-            background: var(--gold); 
-            color: black; 
-            transform: scale(1.02);
-        }
+        .main-content { flex-grow: 1; height: 100vh; background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        .content-display { 
-            flex-grow: 1; 
-            background: #ffffff; 
-            position: relative;
-        }
-
-        iframe { 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
-        }
-
-        /* MOBILE OPTIMIZATION LAYER */
+        /* 🔥 MAGIC: PC vs Mobile Settings */
         @media (max-width: 768px) {
-            .sidebar { width: 100%; position: absolute; z-index: 10; transform: translateX(-100%); }
-            .sidebar.active { transform: translateX(0); }
+            body { flex-direction: column; }
+            .sidebar { display: none; } /* Mobile par sidebar gayab */
+            .mobile-nav { display: flex; gap: 10px; } /* Mobile par buttons active */
+            .main-content { height: calc(100vh - 120px); }
+        }
+
+        @media (min-width: 769px) {
+            body { display: flex; }
+            .mobile-nav { display: none; } /* PC par mobile buttons gayab */
         }
     </style>
 </head>
 <body>
 
-<div id="main-wrapper">
-    <aside class="sidebar">
-        <div class="revenue-monitor">
-            <div style="font-size: 12px; color: #fff; margin-bottom: 5px;">SULTAN MASTER BANKING ENGINE</div>
-            <div class="live-amount" id="sultan-income">$0.2700</div>
-            <div style="font-size: 10px; color: var(--neon-green); margin-top: 5px;">REAL-TIME IBAN TRACKING ACTIVE</div>
+    <div class="sidebar">
+        <div class="revenue-box">
+            <div style="font-size: 10px;">TOTAL REVENUE</div>
+            <div class="amount" id="pc-income">$0.6000</div>
         </div>
+        <h3 style="color: var(--gold);">SULTAN PC ENGINE</h3>
+        <button class="btn" onclick="load('https://quran.com/ur')">📖 ISLAM 360</button>
+        <button class="btn" onclick="window.open('https://www.amazon.com', '_blank')">🛒 AMAZON</button>
+        <button class="btn" onclick="load('https://www.google.com/search?igu=1')">🔍 GOOGLE</button>
+        <button class="btn" onclick="window.open('https://web.whatsapp.com', '_blank')">💬 WHATSAPP</button>
+    </div>
 
-        <div class="category-title">Deeni Markaz</div>
-        <button class="btn" onclick="loadPage('https://quran.com/ur')">📖 Islam 360 / Quran Pro <span>→</span></button>
+    <div class="mobile-nav">
+        <div style="padding-right: 15px; border-right: 1px solid #333;">
+            <span id="mob-income" style="color: #39ff14; font-weight: bold;">$0.6000</span>
+        </div>
+        <button onclick="load('https://quran.com/ur')">📖 QURAN</button>
+        <button onclick="window.open('https://www.amazon.com', '_blank')">🛒 AMZ</button>
+        <button onclick="load('https://www.google.com/search?igu=1')">🔍 GOOGLE</button>
+        <button onclick="window.open('https://web.whatsapp.com', '_blank')">💬 WA</button>
+    </div>
 
-        <div class="category-title" style="color: var(--ai-blue);">Global Marketing</div>
-        <button class="btn" onclick="window.open('https://www.amazon.com', '_blank')">📦 Amazon International</button>
-        <button class="btn" onclick="window.open('https://www.alibaba.com', '_blank')">🇨🇳 Alibaba Factory Direct</button>
-        <button class="btn" onclick="loadPage('https://www.daraz.pk')">🛒 Daraz Local Store</button>
-        <button class="btn" onclick="window.open('https://www.aliexpress.com', '_blank')">📦 Ali Express Global</button>
+    <div class="main-content">
+        <iframe id="screen" src="https://www.google.com/search?igu=1"></iframe>
+    </div>
 
-        <div class="category-title" style="color: var(--social-pink);">Social Network</div>
-        <button class="btn" onclick="window.open('https://web.whatsapp.com', '_blank')">💬 WhatsApp Pro Link</button>
-        <button class="btn" onclick="window.open('https://www.facebook.com', '_blank')">👥 Facebook Global</button>
-        <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">🎵 TikTok Marketing</button>
-
-        <div class="category-title" style="color: var(--ai-blue);">AI Generator Hub</div>
-        <button class="btn" onclick="window.open('https://www.heygen.com', '_blank')">🎥 Grahak Video AI</button>
-        <button class="btn" onclick="window.open('https://elevenlabs.io', '_blank')">🎙️ Varsh / QWN Audio</button>
-        <button class="btn" onclick="window.open('https://runwayml.com', '_blank')">🎨 Hygiene / Piks Image</button>
-
-        <div class="category-title" style="color: var(--game-red);">Pro Gaming Hub</div>
-        <button class="btn" onclick="window.open('https://store.steampowered.com', '_blank')">🎮 Battlefield / COD Hub</button>
-        <button class="btn" onclick="window.open('https://www.pubg.com', '_blank')">🔫 PUBG Global Battle</button>
-    </aside>
-
-    <main class="content-display">
-        <iframe id="main-view" src="https://www.google.com/search?igu=1"></iframe>
-    </main>
-</div>
-
-<script>
-    // SULTAN'S MASTER REVENUE LOGIC (FULL DETAIL)
-    let baseIncome = 0.2700;
-    
-    function updateIncome() {
+    <script>
+        let income = 0.6000;
         setInterval(() => {
-            // Speed adjusted for Sultan: 1.0000 = $1 Real
-            baseIncome += 0.00015; 
-            document.getElementById('sultan-income').innerText = "$" + baseIncome.toFixed(4);
-            
-            // Background Auto-Save simulation
-            if (baseIncome % 1 === 0) {
-                console.log("Sultan: $1 Milestone Reached. Syncing with IBAN...");
-            }
-        }, 1200);
-    }
+            income += 0.00015;
+            let formatted = "$" + income.toFixed(4);
+            if(document.getElementById('pc-income')) document.getElementById('pc-income').innerText = formatted;
+            if(document.getElementById('mob-income')) document.getElementById('mob-income').innerText = formatted;
+        }, 1500);
 
-    function loadPage(url) {
-        document.getElementById('main-view').src = url;
-        // Navigation Bonus
-        baseIncome += 0.0005;
-    }
-
-    // Initialize Engine
-    window.onload = updateIncome;
-</script>
-
+        function load(url) { document.getElementById('screen').src = url; }
+    </script>
 </body>
 </html>
