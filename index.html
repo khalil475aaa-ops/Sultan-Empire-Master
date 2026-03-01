@@ -6,60 +6,167 @@
     <title>SULTAN NEON HUB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --gold: #ffd700; --neon-green: #39ff14; --bg: #0a0a0a; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .amount { color: var(--neon-green); font-size: clamp(24px, 5vw, 35px); font-weight: bold; text-shadow: 0 0 15px var(--neon-green); }
-        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 25px; justify-items: center; }
-        
-        /* Aapka Asli NEON BUTTON Style */
-        .btn { background: #141414; border: 2px solid rgba(255,255,255,0.1); border-radius: 20px; width: 140px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: white; transition: 0.3s; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .btn:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-        
-        /* Aapka Asli ICON CIRCLE Style */
-        .icon-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 25px; color: var(--gold); }
-        .btn span { font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
-
-        /* Har button ka alag glow rang (Aapke Design ke mutabiq) */
-        .btn:nth-child(1) { border-color: #2ecc71; } /* Quran Pak Green */
-        .btn:nth-child(2) { border-color: #3498db; } /* Google Blue */
-        .btn:nth-child(3) { border-color: #25d366; } /* WhatsApp Green */
-        .btn:nth-child(4) { border-color: #1877f2; } /* Facebook Blue */
-        .btn:nth-child(5) { border-color: #ff0000; } /* YouTube Red */
-        .btn:nth-child(6) { border-color: #ee1d52; } /* TikTok Neon Pink */
-        .btn:nth-child(7) { border-color: #ff9900; } /* Amazon Orange */
+        body {
+            margin: 0;
+            background-color: #050505;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #000000;
+            border-bottom: 2px solid #ffd700;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+        }
+        .amount {
+            color: #39ff14;
+            font-size: 35px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+        }
+        .container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .btn:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.2);
+        }
+        .icon {
+            font-size: 30px;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .btn span {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div style="font-weight:bold; color:var(--gold); font-size: 14px;">SULTAN NEON HUB</div>
-        <div class="amount" id="money">$2.6600</div>
+        <div style="font-size: 20px; font-weight: bold; color: #ffd700;">SULTAN EMPIRE</div>
+        <div class="amount" id="money">$2.9624</div>
     </div>
 
     <div class="container">
-        <a href="https://quran.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-book-quran"></i></div><span>QURAN PAK</span></a>
-        <a href="https://google.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-google"></i></div><span>GOOGLE</span></a>
-        <a href="https://whatsapp.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-whatsapp"></i></div><span>WHATSAPP</span></a>
-        <a href="https://facebook.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-facebook-f"></i></div><span>FACEBOOK</span></a>
-        <a href="https://youtube.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-youtube"></i></div><span>YOUTUBE</span></a>
-        <a href="https://tiktok.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-tiktok"></i></div><span>TIKTOK</span></a>
-        <a href="https://amazon.com" class="btn"><div class="icon-circle"><i class="fa-brands fa-amazon"></i></div><span>AMAZON</span></a>
-        <a href="https://alibaba.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-box"></i></div><span>ALIBABA</span></a>
-        <a href="https://aliexpress.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-cart-shopping"></i></div><span>ALIEXPRESS</span></a>
-        <a href="https://poki.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-gamepad"></i></div><span>POKI GAMES</span></a>
-        <a href="https://crazygames.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-headset"></i></div><span>CRAZY GAMES</span></a>
-        <a href="https://runwayml.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-video"></i></div><span>RUNWAY AI</span></a>
-        <a href="https://klingai.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-robot"></i></div><span>KLING AI</span></a>
-        <a href="https://epicgames.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-gun"></i></div><span>EPIC GAMES</span></a>
-        <a href="https://y8.com" class="btn"><div class="icon-circle"><i class="fa-solid fa-play"></i></div><span>Y8 GAMES</span></a>
-        <a href="https://pika.art" class="btn"><div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>PIKA AI</span></a>
-        <a href="https://bbc.com/news" class="btn"><div class="icon-circle"><i class="fa-solid fa-newspaper"></i></div><span>BBC NEWS</span></a>
+        <a href="https://quran.com" class="btn">
+            <i class="fa-solid fa-book-quran icon"></i>
+            <span>QURAN PAK</span>
+        </a>
+
+        <a href="https://google.com" class="btn">
+            <i class="fa-brands fa-google icon"></i>
+            <span>GOOGLE</span>
+        </a>
+
+        <a href="https://whatsapp.com" class="btn">
+            <i class="fa-brands fa-whatsapp icon"></i>
+            <span>WHATSAPP</span>
+        </a>
+
+        <a href="https://facebook.com" class="btn">
+            <i class="fa-brands fa-facebook icon"></i>
+            <span>FACEBOOK</span>
+        </a>
+
+        <a href="https://youtube.com" class="btn">
+            <i class="fa-brands fa-youtube icon"></i>
+            <span>YOUTUBE</span>
+        </a>
+
+        <a href="https://tiktok.com" class="btn">
+            <i class="fa-brands fa-tiktok icon"></i>
+            <span>TIKTOK</span>
+        </a>
+
+        <a href="https://instagram.com" class="btn">
+            <i class="fa-brands fa-instagram icon"></i>
+            <span>INSTAGRAM</span>
+        </a>
+
+        <a href="https://amazon.com" class="btn">
+            <i class="fa-brands fa-amazon icon"></i>
+            <span>AMAZON</span>
+        </a>
+
+        <a href="https://alibaba.com" class="btn">
+            <i class="fa-solid fa-cart-shopping icon"></i>
+            <span>ALIBABA</span>
+        </a>
+
+        <a href="https://aliexpress.com" class="btn">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+            <span>ALIEXPRESS</span>
+        </a>
+
+        <a href="https://poki.com" class="btn">
+            <i class="fa-solid fa-gamepad icon"></i>
+            <span>POKI GAMES</span>
+        </a>
+
+        <a href="https://crazygames.com" class="btn">
+            <i class="fa-solid fa-headset icon"></i>
+            <span>CRAZY GAMES</span>
+        </a>
+
+        <a href="https://runwayml.com" class="btn">
+            <i class="fa-solid fa-video icon"></i>
+            <span>RUNWAY AI</span>
+        </a>
+
+        <a href="https://klingai.com" class="btn">
+            <i class="fa-solid fa-robot icon"></i>
+            <span>KLING AI</span>
+        </a>
+
+        <a href="https://epicgames.com" class="btn">
+            <i class="fa-solid fa-desktop icon"></i>
+            <span>EPIC GAMES</span>
+        </a>
+
+        <a href="https://y8.com" class="btn">
+            <i class="fa-solid fa-play icon"></i>
+            <span>Y8 GAMES</span>
+        </a>
+
+        <a href="https://pika.art" class="btn">
+            <i class="fa-solid fa-wand-magic-sparkles icon"></i>
+            <span>PIKA AI</span>
+        </a>
     </div>
 
     <script>
-        // Dollar update hone wala timer
-        let income = 2.6600;
+        let income = 2.9624;
         function updateDisplay() {
             document.getElementById('money').innerText = "$" + income.toFixed(4);
         }
