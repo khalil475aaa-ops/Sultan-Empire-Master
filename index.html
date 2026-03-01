@@ -3,155 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN ULTRA CRYSTAL V29.0</title>
+    <title>SULTAN MASTER CRYSTAL V30.0</title>
     <style>
-        :root { 
-            --gold: #ffd700; 
-            --bg-dark: #0a0a0a;
-        }
-        
-        body { 
-            margin: 0; 
-            background: var(--bg-dark); 
-            color: white; 
-            font-family: 'Segoe UI', sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            height: 100vh; 
-            overflow: hidden; 
-        }
+        :root { --gold: #ffd700; --bg: #0a0a0a; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-        /* --- REVENUE HEADER --- */
-        .revenue-header { 
-            background: #000;
-            border-bottom: 2px solid var(--gold); 
-            padding: 10px 25px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            z-index: 100;
-        }
-        .amount { color: #39ff14; font-size: 30px; font-weight: bold; text-shadow: 0 0 10px #39ff14; }
+        /* REVENUE HEADER */
+        .revenue-header { background: #000; border-bottom: 2px solid var(--gold); padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); z-index: 100; }
+        .amount { color: #39ff14; font-size: 32px; font-weight: bold; text-shadow: 0 0 10px #39ff14; }
 
-        /* --- DASHBOARD GRID --- */
-        .dashboard-container { 
-            flex-grow: 1; 
-            overflow-y: auto; 
-            padding: 20px; 
-            display: grid; 
-            gap: 20px;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-        }
+        /* DASHBOARD GRID */
+        .dashboard-container { flex-grow: 1; overflow-y: auto; padding: 25px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 
-        /* --- THE CRYSTAL NEON BUTTON (Asli Shisha Effect) --- */
+        /* THE CRYSTAL BUTTON (White Glass with Stroke Layer) */
         .tile-btn { 
             position: relative;
-            background: rgba(255, 255, 255, 0.15); /* White Crystal Base */
-            backdrop-filter: blur(15px); /* Shishe ki dhund */
-            border: 2px solid rgba(255, 255, 255, 0.4); /* Painting Layer/Outer Layer */
+            background: rgba(255, 255, 255, 0.12); 
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.4); /* Painting Layer */
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             text-decoration: none;
             color: #fff;
-            font-weight: bold;
             text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2);
-            height: 110px;
+            transition: 0.3s;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 100px;
         }
+        .tile-btn:hover { transform: scale(1.08); background: rgba(255, 255, 255, 0.2); border-color: #fff; }
 
-        /* Hover Effect */
-        .tile-btn:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.25);
-            border-color: #fff;
-        }
+        /* NEON UNDERGLOW COLORS (Niche ki Light) */
+        .light-blue { box-shadow: 0 8px 25px -5px rgba(0, 242, 255, 0.8); border-bottom: 4px solid #00f2ff; }
+        .light-red { box-shadow: 0 8px 25px -5px rgba(255, 0, 0, 0.8); border-bottom: 4px solid #ff0000; }
+        .light-green { box-shadow: 0 8px 25px -5px rgba(0, 255, 136, 0.8); border-bottom: 4px solid #00ff88; }
+        .light-yellow { box-shadow: 0 8px 25px -5px rgba(255, 215, 0, 0.8); border-bottom: 4px solid #ffd700; }
 
-        /* --- NEON UNDERGLOW (Niche ki Light) --- */
-        /* Red Light */
-        .light-red { box-shadow: 0 10px 30px -5px rgba(255, 0, 0, 0.8); border-bottom: 4px solid #ff0000; }
-        /* Green Light */
-        .light-green { box-shadow: 0 10px 30px -5px rgba(0, 255, 136, 0.8); border-bottom: 4px solid #00ff88; }
-        /* Blue Light */
-        .light-blue { box-shadow: 0 10px 30px -5px rgba(0, 242, 255, 0.8); border-bottom: 4px solid #00f2ff; }
-        /* Yellow Light */
-        .light-yellow { box-shadow: 0 10px 30px -5px rgba(255, 215, 0, 0.8); border-bottom: 4px solid #ffd700; }
-
-        .tile-icon { font-size: 28px; margin-bottom: 10px; filter: drop-shadow(0 0 5px white); }
-        .tile-title { font-size: 14px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0,0,0,1); }
-
+        .tile-icon { font-size: 26px; margin-bottom: 8px; filter: drop-shadow(0 0 5px white); }
+        .tile-title { font-size: 13px; font-weight: bold; letter-spacing: 0.5px; text-shadow: 0 0 5px black; }
     </style>
 </head>
 <body>
 
 <div class="revenue-header">
-    <div style="font-weight:bold; color:var(--gold);">SULTAN NEON CRYSTAL</div>
+    <div style="font-weight:bold; color:var(--gold); letter-spacing:1px;">SULTAN MASTER EMPIRE</div>
     <div class="amount" id="main-income">$0.0000</div>
-    <div style="font-size: 10px; color: #888;">MOD: CRYSTAL GLASS</div>
+    <div style="font-size: 10px; color: #888;">CRYSTAL V30.0</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://www.google.com" target="_blank" class="tile-btn light-blue">
-        <span class="tile-icon">🔍</span><span class="tile-title">GOOGLE</span>
-    </a>
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn light-blue">
-        <span class="tile-icon">💬</span><span class="tile-title">WHATSAPP</span>
-    </a>
+    <a href="https://www.google.com" target="_blank" class="tile-btn light-blue"><span class="tile-icon">🔍</span><span class="tile-title">GOOGLE</span></a>
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn light-blue"><span class="tile-icon">💬</span><span class="tile-title">WHATSAPP</span></a>
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn light-blue"><span class="tile-icon">🔵</span><span class="tile-title">FACEBOOK</span></a>
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn light-blue"><span class="tile-icon">🎵</span><span class="tile-title">TIKTOK</span></a>
 
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn light-green">
-        <span class="tile-icon">📖</span><span class="tile-title">QURAN PAK</span>
-    </a>
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn light-green">
-        <span class="tile-icon">📦</span><span class="tile-title">ALIBABA</span>
-    </a>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn light-green"><span class="tile-icon">📖</span><span class="tile-title">QURAN PAK</span></a>
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn light-green"><span class="tile-icon">📦</span><span class="tile-title">ALIBABA</span></a>
+    <a href="https://klingai.com" target="_blank" class="tile-btn light-green"><span class="tile-icon">🤖</span><span class="tile-title">KLING AI</span></a>
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn light-green"><span class="tile-icon">🕹️</span><span class="tile-title">CRAZY GAMES</span></a>
 
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn light-red">
-        <span class="tile-icon">📺</span><span class="tile-title">YOUTUBE</span>
-    </a>
-    <a href="https://www.poki.com" target="_blank" class="tile-btn light-red">
-        <span class="tile-icon">🎮</span><span class="tile-title">POKI GAMES</span>
-    </a>
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn light-red"><span class="tile-icon">📺</span><span class="tile-title">YOUTUBE</span></a>
+    <a href="https://www.poki.com" target="_blank" class="tile-btn light-red"><span class="tile-icon">🎮</span><span class="tile-title">POKI GAMES</span></a>
+    <a href="https://runwayml.com" target="_blank" class="tile-btn light-red"><span class="tile-icon">🎬</span><span class="tile-title">RUNWAY AI</span></a>
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn light-red"><span class="tile-icon">⚔️</span><span class="tile-title">EPIC GAMES</span></a>
 
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn light-yellow">
-        <span class="tile-icon">🛒</span><span class="tile-title">ALIEXPRESS</span>
-    </a>
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn light-yellow">
-        <span class="tile-icon">🏛️</span><span class="tile-title">AMAZON</span>
-    </a>
-
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn light-blue">
-        <span class="tile-icon">🎵</span><span class="tile-title">TIKTOK</span>
-    </a>
-    <a href="https://runwayml.com" target="_blank" class="tile-btn light-red">
-        <span class="tile-icon">🎬</span><span class="tile-title">RUNWAY AI</span>
-    </a>
-    <a href="https://klingai.com" target="_blank" class="tile-btn light-green">
-        <span class="tile-icon">🤖</span><span class="tile-title">KLING AI</span>
-    </a>
-    <a href="https://pika.art" target="_blank" class="tile-btn light-yellow">
-        <span class="tile-icon">✨</span><span class="tile-title">PIKA AI</span>
-    </a>
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn light-yellow"><span class="tile-icon">🛒</span><span class="tile-title">ALIEXPRESS</span></a>
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn light-yellow"><span class="tile-icon">🏛️</span><span class="tile-title">AMAZON</span></a>
+    <a href="https://pika.art" target="_blank" class="tile-btn light-yellow"><span class="tile-icon">✨</span><span class="tile-title">PIKA AI</span></a>
+    <a href="https://www.y8.com" target="_blank" class="tile-btn light-yellow"><span class="tile-icon">🎱</span><span class="tile-title">Y8 CLASSIC</span></a>
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn light-yellow"><span class="tile-icon">📰</span><span class="tile-title">GLOBAL NEWS</span></a>
 </div>
 
 <script>
-    // Memory Storage Support
     let income = parseFloat(localStorage.getItem('sultan_income')) || 0.8656; 
-
     function updateDisplay() {
         document.getElementById('main-income').innerText = "$" + income.toFixed(4);
         localStorage.setItem('sultan_income', income);
     }
-
-    setInterval(() => {
-        income += 0.0004; 
-        updateDisplay();
-    }, 1000);
-
+    setInterval(() => { income += 0.0004; updateDisplay(); }, 1000);
     updateDisplay(); 
 </script>
 </body>
