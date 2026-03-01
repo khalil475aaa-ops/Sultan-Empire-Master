@@ -3,81 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN ICONIC CRYSTAL V31.0</title>
+    <title>SULTAN REAL-COLOR ICONIC V32.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --bg: #050505; }
         body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-        /* HEADER */
         .revenue-header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); z-index: 100; }
         .amount { color: #39ff14; font-size: 28px; font-weight: bold; text-shadow: 0 0 10px #39ff14; }
 
-        /* GRID */
-        .dashboard-container { flex-grow: 1; overflow-y: auto; padding: 15px; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+        .dashboard-container { flex-grow: 1; overflow-y: auto; padding: 15px; display: grid; gap: 15px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 
-        /* THE ICONIC CRYSTAL BUTTON */
+        /* THE CRYSTAL BUTTON */
         .tile-btn { 
             position: relative;
-            background: rgba(255, 255, 255, 0.1); 
+            background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
             text-decoration: none;
             color: #fff;
             transition: 0.3s;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            height: 90px;
-            text-align: center;
+            height: 110px;
         }
-        .tile-btn:hover { transform: scale(1.05); border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
 
-        /* LOGO SIZES */
-        .tile-btn i { font-size: 32px; margin-bottom: 8px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        /* LOGO KA DAYRA (The Circle) */
+        .icon-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--gold); /* Chamakdar Gold Dayra */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* REAL COLORS FOR ICONS */
+        .fa-whatsapp { color: #25D366; }
+        .fa-facebook { color: #1877F2; }
+        .fa-youtube { color: #FF0000; }
+        .fa-amazon { color: #FF9900; }
+        .fa-google { color: #4285F4; }
+        .fa-tiktok { color: #FFFFFF; }
+        .fa-book-quran { color: #00FF88; }
+        .fa-robot { color: #FF00FF; }
+        .fa-gamepad { color: #FF3E3E; }
+        .fa-box { color: #FF6A00; } /* Alibaba */
+        .fa-cart-shopping { color: #E62E04; } /* AliExpress */
+
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        /* REAL COLORS & LIGHTS */
-        .btn-whatsapp { background: rgba(37, 211, 102, 0.2); border-color: #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
-        .btn-facebook { background: rgba(24, 119, 242, 0.2); border-color: #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); }
-        .btn-youtube { background: rgba(255, 0, 0, 0.2); border-color: #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4); }
-        .btn-quran { background: rgba(0, 128, 0, 0.3); border-color: #008000; box-shadow: 0 5px 15px rgba(0, 128, 0, 0.5); }
-        .btn-google { background: rgba(66, 133, 244, 0.2); border-color: #4285f4; box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4); }
-        .btn-amazon { background: rgba(255, 153, 0, 0.2); border-color: #ff9900; box-shadow: 0 5px 15px rgba(255, 153, 0, 0.4); }
-        .btn-tiktok { background: rgba(0, 0, 0, 0.5); border-color: #fe2c55; box-shadow: 0 5px 15px rgba(254, 44, 85, 0.4); }
-        .btn-ai { background: rgba(255, 0, 255, 0.1); border-color: #ff00ff; box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4); }
-        .btn-game { background: rgba(255, 255, 255, 0.1); border-color: #ffd700; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); }
+        
+        /* Underglow Lighting */
+        .btn-glow { box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1); }
+        .tile-btn:hover { transform: scale(1.05); border-color: var(--gold); }
     </style>
 </head>
 <body>
 
 <div class="revenue-header">
-    <div style="font-weight:bold; color:var(--gold);">SULTAN ICONIC HUB</div>
+    <div style="font-weight:bold; color:var(--gold);">SULTAN REAL-COLOR HUB</div>
     <div class="amount" id="main-income">$0.0000</div>
-    <div style="font-size: 10px; color: #888;">REAL LOGO V31.0</div>
+    <div style="font-size: 10px; color: #888;">GOLD CIRCLE V32.0</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn btn-quran"><i class="fa-solid fa-book-quran"></i><span class="tile-title">Quran Pak</span></a>
-    <a href="https://www.google.com" target="_blank" class="tile-btn btn-google"><i class="fa-brands fa-google"></i><span class="tile-title">Google</span></a>
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i><span class="tile-title">WhatsApp</span></a>
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn btn-facebook"><i class="fa-brands fa-facebook"></i><span class="tile-title">Facebook</span></a>
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn btn-youtube"><i class="fa-brands fa-youtube"></i><span class="tile-title">YouTube</span></a>
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn btn-tiktok"><i class="fa-brands fa-tiktok"></i><span class="tile-title">TikTok</span></a>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#00ff88;"><i class="fa-solid fa-book-quran" style="font-size: 30px;"></i></div><span class="tile-title">Quran Pak</span></a>
+    <a href="https://www.google.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#4285f4;"><i class="fa-brands fa-google" style="font-size: 30px;"></i></div><span class="tile-title">Google</span></a>
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#25d366;"><i class="fa-brands fa-whatsapp" style="font-size: 32px;"></i></div><span class="tile-title">WhatsApp</span></a>
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#1877f2;"><i class="fa-brands fa-facebook" style="font-size: 32px;"></i></div><span class="tile-title">Facebook</span></a>
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff0000;"><i class="fa-brands fa-youtube" style="font-size: 30px;"></i></div><span class="tile-title">YouTube</span></a>
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#fff;"><i class="fa-brands fa-tiktok" style="font-size: 30px;"></i></div><span class="tile-title">TikTok</span></a>
 
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn btn-amazon"><i class="fa-brands fa-amazon"></i><span class="tile-title">Amazon</span></a>
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn btn-amazon" style="border-color:#ff6a00;"><i class="fa-solid fa-box"></i><span class="tile-title">Alibaba</span></a>
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn btn-amazon" style="border-color:#e62e04;"><i class="fa-solid fa-cart-shopping"></i><span class="tile-title">AliExpress</span></a>
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff9900;"><i class="fa-brands fa-amazon" style="font-size: 28px;"></i></div><span class="tile-title">Amazon</span></a>
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff6a00;"><i class="fa-solid fa-box" style="font-size: 26px;"></i></div><span class="tile-title">Alibaba</span></a>
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#e62e04;"><i class="fa-solid fa-cart-shopping" style="font-size: 26px;"></i></div><span class="tile-title">AliExpress</span></a>
 
-    <a href="https://www.poki.com" target="_blank" class="tile-btn btn-game"><i class="fa-solid fa-gamepad"></i><span class="tile-title">Poki Games</span></a>
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn btn-game"><i class="fa-solid fa-headset"></i><span class="tile-title">Crazy Games</span></a>
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn btn-game"><i class="fa-solid fa-gun"></i><span class="tile-title">Epic Games</span></a>
-    <a href="https://www.y8.com" target="_blank" class="tile-btn btn-game"><i class="fa-solid fa-circle-play"></i><span class="tile-title">Y8 Games</span></a>
+    <a href="https://www.poki.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff3e3e;"><i class="fa-solid fa-gamepad" style="font-size: 28px;"></i></div><span class="tile-title">Poki Games</span></a>
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ffd700;"><i class="fa-solid fa-headset" style="font-size: 28px;"></i></div><span class="tile-title">Crazy Games</span></a>
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#fff;"><i class="fa-solid fa-gun" style="font-size: 26px;"></i></div><span class="tile-title">Epic Games</span></a>
+    <a href="https://www.y8.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff0000;"><i class="fa-solid fa-circle-play" style="font-size: 28px;"></i></div><span class="tile-title">Y8 Games</span></a>
 
-    <a href="https://runwayml.com" target="_blank" class="tile-btn btn-ai"><i class="fa-solid fa-video"></i><span class="tile-title">Runway AI</span></a>
-    <a href="https://klingai.com" target="_blank" class="tile-btn btn-ai"><i class="fa-solid fa-robot"></i><span class="tile-title">Kling AI</span></a>
-    <a href="https://pika.art" target="_blank" class="tile-btn btn-ai"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="tile-title">Pika AI</span></a>
-    <a href="https://www.bbc.com" target="_blank" class="tile-btn btn-google" style="border-color:#bb1919;"><i class="fa-solid fa-newspaper"></i><span class="tile-title">Global News</span></a>
+    <a href="https://runwayml.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#ff00ff;"><i class="fa-solid fa-video" style="font-size: 26px;"></i></div><span class="tile-title">Runway AI</span></a>
+    <a href="https://klingai.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#00f2ff;"><i class="fa-solid fa-robot" style="font-size: 26px;"></i></div><span class="tile-title">Kling AI</span></a>
+    <a href="https://pika.art" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#fff;"><i class="fa-solid fa-wand-magic-sparkles" style="font-size: 26px;"></i></div><span class="tile-title">Pika AI</span></a>
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn"><div class="icon-circle" style="border-color:#bb1919;"><i class="fa-solid fa-newspaper" style="font-size: 26px;"></i></div><span class="tile-title">Global News</span></a>
 </div>
 
 <script>
