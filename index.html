@@ -11,20 +11,30 @@
         .header { background: #000; border-bottom: 2px solid var(--gold); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
         .amount { color: var(--neon-green); font-size: clamp(24px, 5vw, 35px); font-weight: bold; text-shadow: 0 0 15px var(--neon-green); }
         .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 25px; justify-items: center; }
+        
+        /* Aapka Asli NEON BUTTON Style */
         .btn { background: #141414; border: 2px solid rgba(255,255,255,0.1); border-radius: 20px; width: 140px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: white; transition: 0.3s; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .btn:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        
+        /* Aapka Asli ICON CIRCLE Style */
         .icon-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 25px; color: var(--gold); }
         .btn span { font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
-        /* Har button ka alag glow rang */
-        .btn:nth-child(1) { border-color: #2ecc71; } .btn:nth-child(2) { border-color: #3498db; }
-        .btn:nth-child(3) { border-color: #25d366; } .btn:nth-child(4) { border-color: #1877f2; }
+
+        /* Har button ka alag glow rang (Aapke Design ke mutabiq) */
+        .btn:nth-child(1) { border-color: #2ecc71; } /* Quran Pak Green */
+        .btn:nth-child(2) { border-color: #3498db; } /* Google Blue */
+        .btn:nth-child(3) { border-color: #25d366; } /* WhatsApp Green */
+        .btn:nth-child(4) { border-color: #1877f2; } /* Facebook Blue */
+        .btn:nth-child(5) { border-color: #ff0000; } /* YouTube Red */
+        .btn:nth-child(6) { border-color: #ee1d52; } /* TikTok Neon Pink */
+        .btn:nth-child(7) { border-color: #ff9900; } /* Amazon Orange */
     </style>
 </head>
 <body>
 
     <div class="header">
         <div style="font-weight:bold; color:var(--gold); font-size: 14px;">SULTAN NEON HUB</div>
-        <div class="amount" id="money">$2.9624</div>
+        <div class="amount" id="money">$2.6600</div>
     </div>
 
     <div class="container">
@@ -48,19 +58,15 @@
     </div>
 
     <script>
-        // Dollar update hone wala logic
-        let income = parseFloat(localStorage.getItem('sultan_income')) || 2.9624;
-        
+        // Dollar update hone wala timer
+        let income = 2.6600;
         function updateDisplay() {
             document.getElementById('money').innerText = "$" + income.toFixed(4);
-            localStorage.setItem('sultan_income', income);
         }
-
         setInterval(() => {
-            income += 0.0004; // Speed aap yahan se badha sakte hain
+            income += 0.0001;
             updateDisplay();
-        }, 3000);
-        
+        }, 2000);
         updateDisplay();
     </script>
 
