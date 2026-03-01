@@ -3,84 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN ULTIMATE EMPIRE</title>
+    <title>SULTAN'S AALISHAN EMPIRE V25.0</title>
     <style>
-        :root { --gold: #ffd700; --black: #050505; --neon-blue: #00f2ff; --game-red: #ff3e3e; }
-        body { margin: 0; background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-
-        /* REVENUE BAR */
-        .revenue-header { background: #111; border-bottom: 2px solid var(--gold); padding: 10px; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
-        .amount { color: #39ff14; font-size: 26px; font-weight: bold; text-shadow: 0 0 10px #39ff14; }
-
-        /* SCROLLABLE TOOLBAR */
-        .app-toolbar { 
-            display: flex; overflow-x: auto; background: #1a1a1a; padding: 10px; gap: 10px; border-bottom: 1px solid #333;
-            scrollbar-width: thin; scrollbar-color: var(--gold) #1a1a1a;
+        :root { 
+            --gold: #ffd700; 
+            --black: #050505; 
+            --neon-blue: #00f2ff; 
+            --game-red: #ff3e3e; 
+            --sh-green: #00ff88;
+            --yt-red: #ff0000;
+            --az-orange: #ff9900;
         }
-        .app-toolbar::-webkit-scrollbar { height: 5px; }
-        .app-toolbar::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+        body { margin: 0; background: var(--black); color: white; font-family: 'Poppins', 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-        .btn { 
-            padding: 10px 18px; background: #252525; border: 1px solid #444; color: #ddd; 
-            border-radius: 6px; font-size: 13px; cursor: pointer; white-space: nowrap; transition: 0.3s;
+        /* --- PROFESSIONAL REVENUE HEADER --- */
+        .revenue-header { 
+            background: linear-gradient(180deg, #1a1a1a, #0a0a0a); 
+            border-bottom: 2px solid var(--gold); 
+            padding: 15px 25px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            z-index: 100;
         }
-        .btn:hover { border-color: var(--gold); background: #333; }
+        .revenue-title { font-size: 14px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .amount { color: #39ff14; font-size: 32px; font-weight: bold; text-shadow: 0 0 15px #39ff14; font-family: monospace; }
+        .version-tag { font-size: 11px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 215, 0, 0.1); padding: 3px 8px; border-radius: 4px; }
+
+        /* --- PROFESSIONAL DASHBOARD (Dabbe) --- */
+        .dashboard-container { 
+            flex-grow: 1; 
+            overflow-y: auto; 
+            padding: 25px; 
+            display: grid; 
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Smart grid for all screens */
+        }
+
+        /* PC Layout Specifics */
+        @media (min-width: 992px) {
+            body { flex-direction: row; }
+            .revenue-header { flex-direction: column; width: 280px; height: 100vh; border-bottom: none; border-right: 3px solid var(--gold); padding: 40px 20px; box-shadow: 4px 0 15px rgba(255, 215, 0, 0.2); }
+            .revenue-title { margin-bottom: 20px; text-align: center; }
+            .amount { margin-bottom: 30px; font-size: 40px; }
+            .dashboard-container { padding: 40px; }
+        }
+
+        /* --- THE SHADED BUTTONS (Dabbe) --- */
+        .tile-btn { 
+            aspect-ratio: 16/10; /* Clean dabba shape */
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: 0.4s ease; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            border: 2px solid rgba(255, 255, 255, 0.1); 
+            text-decoration: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            
+            /* Professional Gradient Shade Effect */
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.5) 100%);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        .tile-btn:hover { 
+            transform: translateY(-8px) scale(1.02); 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6); 
+            border-color: rgba(255, 215, 0, 0.6);
+        }
         
-        /* Categories Color Coding */
-        .btn-islam { border-color: #00ff88; color: #00ff88; }
-        .btn-ai { border-color: var(--neon-blue); color: var(--neon-blue); }
-        .btn-game { border-color: var(--game-red); color: var(--game-red); font-weight: bold; }
-        .btn-shop { border-color: var(--gold); color: var(--gold); }
+        .tile-icon { font-size: 40px; margin-bottom: 15px; }
+        .tile-title { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .tile-desc { font-size: 11px; color: rgba(255, 255, 255, 0.7); margin-top: 5px; }
 
-        /* MAIN CONTENT */
-        .main-viewer { flex-grow: 1; background: white; }
-        iframe { width: 100%; height: 100%; border: none; }
+        /* Category Shaded Colors */
+        .tile-google { border-color: #4285F4; background: linear-gradient(135deg, #1a3a6c, #0d1a2f); }
+        .tile-islamic { border-color: var(--sh-green); background: linear-gradient(135deg, #005a30, #002d18); }
+        .tile-gaming { border-color: var(--game-red); background: linear-gradient(135deg, #6c1a1a, #2f0d0d); }
+        .tile-shopping { border-color: var(--az-orange); background: linear-gradient(135deg, #6c411a, #2f1c0d); }
+        .tile-social { border-color: var(--neon-blue); background: linear-gradient(135deg, #1a6c6c, #0d2f2f); }
+        .tile-video { border-color: var(--yt-red); background: linear-gradient(135deg, #6c1a1a, #2f0d0d); }
+        .tile-ai { border-color: #ff00ff; background: linear-gradient(135deg, #6c1a6c, #2f0d2f); }
+
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="revenue-header">
-    <div style="font-size: 12px; color: var(--gold);">SULTAN EMPIRE MASTER</div>
-    <div class="amount" id="main-income">$0.7600</div>
-    <div style="font-size: 10px;">PRO V24.0</div>
+    <div class="revenue-title">SULTAN GLOBAL NODE-01</div>
+    <div class="amount" id="main-income">$0.6500</div>
+    <div class="version-tag">Aalishan Pro V25.0</div>
 </div>
 
-<div class="app-toolbar">
-    <button class="btn btn-islam" onclick="load('https://quran.com/ur')">📖 QURAN / ISLAM 360</button>
+<div class="dashboard-container">
     
-    <button class="btn" onclick="load('https://www.google.com/search?igu=1')">🔍 GOOGLE</button>
-    <button class="btn" onclick="window.open('https://web.whatsapp.com', '_blank')">💬 WHATSAPP</button>
-    <button class="btn" onclick="window.open('https://www.facebook.com', '_blank')">🔵 FACEBOOK</button>
-    <button class="btn" onclick="window.open('https://www.tiktok.com', '_blank')">🎵 TIKTOK</button>
+    <a href="https://www.google.com" target="_blank" class="tile-btn tile-google">
+        <div class="tile-icon">🔍</div>
+        <div class="tile-title">GOOGLE SEARCH</div>
+        <div class="tile-desc">Naya Professional Tab</div>
+    </a>
 
-    <button class="btn btn-game" onclick="window.open('https://www.poki.com', '_blank')">🎮 POKI GAMES</button>
-    <button class="btn btn-game" onclick="window.open('https://www.crazygames.com', '_blank')">🕹️ CRAZY GAMES</button>
-    <button class="btn btn-game" onclick="window.open('https://www.epicgames.com', '_blank')">⚔️ EPIC GAMES (PUBG)</button>
-    <button class="btn btn-game" onclick="window.open('https://www.y8.com', '_blank')">🎱 Y8 GAMES</button>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn tile-islamic">
+        <div class="tile-icon">📖</div>
+        <div class="tile-title">QURAN & ISLAM 360</div>
+        <div class="tile-desc">Tilawat-e-Kalam-e-Pak</div>
+    </a>
 
-    <button class="btn btn-ai" onclick="window.open('https://runwayml.com', '_blank')">🎬 RUNWAY AI</button>
-    <button class="btn btn-ai" onclick="window.open('https://klingai.com', '_blank')">🤖 KLING AI</button>
-    <button class="btn btn-ai" onclick="window.open('https://pika.art', '_blank')">✨ PIKA AI</button>
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn tile-video">
+        <div class="tile-icon">📺</div>
+        <div class="tile-title">YOUTUBE PROFESSIONAL</div>
+        <div class="tile-desc">Naya Professional Tab</div>
+    </a>
 
-    <button class="btn btn-shop" onclick="window.open('https://www.aliexpress.com', '_blank')">🛒 ALIEXPRESS</button>
-    <button class="btn btn-shop" onclick="window.open('https://www.alibaba.com', '_blank')">📦 ALIBABA</button>
-    <button class="btn btn-shop" onclick="window.open('https://www.amazon.com', '_blank')">🏛️ AMAZON</button>
-</div>
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn tile-social">
+        <div class="tile-icon">💬</div>
+        <div class="tile-title">WHATSAPP WEB</div>
+        <div class="tile-desc">Doston se Rabta</div>
+    </a>
 
-<div class="main-viewer">
-    <iframe id="global-frame" src="https://www.google.com/search?igu=1"></iframe>
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn tile-social">
+        <div class="tile-icon">🔵</div>
+        <div class="tile-title">FACEBOOK GLOBAL</div>
+        <div class="tile-desc">Social Network</div>
+    </a>
+
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn tile-social">
+        <div class="tile-icon">🎵</div>
+        <div class="tile-title">TIKTOK TRENDS</div>
+        <div class="tile-desc">Short Videos</div>
+    </a>
+
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn tile-shopping">
+        <div class="tile-icon">🏛️</div>
+        <div class="tile-title">AMAZON GLOBAL</div>
+        <div class="tile-desc">Maroof Tareen Market</div>
+    </a>
+
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn tile-shopping">
+        <div class="tile-icon">📦</div>
+        <div class="tile-title">ALIBABA WHOLESALE</div>
+        <div class="tile-desc">Global Trade</div>
+    </a>
+
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn tile-shopping">
+        <div class="tile-icon">🛒</div>
+        <div class="tile-title">ALIEXPRESS RETAIL</div>
+        <div class="tile-desc">Online Shopping</div>
+    </a>
+
+    <a href="https://www.poki.com" target="_blank" class="tile-btn tile-gaming">
+        <div class="tile-icon">🎮</div>
+        <div class="tile-title">POKI FUN GAMES</div>
+        <div class="tile-desc">Hazaaroo Online Games</div>
+    </a>
+
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn tile-gaming">
+        <div class="tile-icon">🕹️</div>
+        <div class="tile-title">CRAZY GAMES HUB</div>
+        <div class="tile-desc">Action & Strategy</div>
+    </a>
+
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn tile-gaming">
+        <div class="tile-icon">⚔️</div>
+        <div class="tile-title">EPIC GAMING ARENA</div>
+        <div class="tile-desc">PUBG & Call of Duty</div>
+    </a>
+
+    <a href="https://www.y8.com" target="_blank" class="tile-btn tile-gaming">
+        <div class="tile-icon">🎱</div>
+        <div class="tile-title">Y8 CLASSIC GAMES</div>
+        <div class="tile-desc">Hazaaroo Purani Games</div>
+    </a>
+
+    <a href="https://runwayml.com" target="_blank" class="tile-btn tile-ai">
+        <div class="tile-icon">🎬</div>
+        <div class="tile-title">RUNWAY AI VIDEO</div>
+        <div class="tile-desc">AI Video Magic</div>
+    </a>
+
+    <a href="https://klingai.com" target="_blank" class="tile-btn tile-ai">
+        <div class="tile-icon">🤖</div>
+        <div class="tile-title">KLING AI ENGINE</div>
+        <div class="tile-desc">Advanced AI</div>
+    </a>
+
+    <a href="https://pika.art" target="_blank" class="tile-btn tile-ai">
+        <div class="tile-icon">✨</div>
+        <div class="tile-title">PIKA ART VIDEO</div>
+        <div class="tile-desc">AI Creativity</div>
+    </a>
+
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn tile-video">
+        <div class="tile-icon">📰</div>
+        <div class="tile-title">GLOBAL NEWS HUB</div>
+        <div class="tile-desc">International Khabrain</div>
+    </a>
+
 </div>
 
 <script>
-    let currentIncome = 0.7600; // Aapka naya balance yahin se shuru hoga
+    let currentIncome = 0.6500; // Poora balance safe hai
     setInterval(() => {
-        currentIncome += 0.0002; 
+        currentIncome += 0.0003; // Turbo Speed Activated!
         document.getElementById('main-income').innerText = "$" + currentIncome.toFixed(4);
-    }, 1000);
-
-    function load(url) {
-        document.getElementById('global-frame').src = url;
-    }
+    }, 900);
 </script>
 </body>
 </html>
