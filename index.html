@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN FINAL HUB V67.0</title>
+    <title>SULTAN SPEED HUB V68.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --deep-blue: #000b29; }
         
-        /* --- BACKGROUND --- */
         body { 
             margin: 0; 
             background: radial-gradient(circle at center, #001a4d 0%, #000511 100%);
@@ -23,28 +22,25 @@
             align-items: center; box-shadow: 0 5px 25px rgba(0, 11, 41, 0.8); z-index: 100; 
         }
 
-        /* --- 1. PERFECT ROUND 3D FACE ROTATION (No Square) --- */
+        /* --- PERFECT ROUND 3D FACE --- */
         .glass-ball-frame {
             width: 85px; height: 85px; position: relative;
             border-radius: 50%; overflow: hidden; border: 2px solid var(--gold);
-            box-shadow: 0 0 20px var(--gold); background: #000; /* کالے بیک گراؤنڈ کے ساتھ مکس */
+            box-shadow: 0 0 20px var(--gold); background: #000;
             perspective: 1000px;
         }
         
-        /* تصویر اب مکمل گول ہے اور چہرہ گھوم رہا ہے */
         .character-spin {
             position: absolute; width: 100%; height: 100%;
             background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png') center/cover;
-            border-radius: 50%; /* تصویر کو گول کر دیا */
+            border-radius: 50%;
             z-index: 1;
             animation: gameRotate 6s linear infinite;
             transform-style: preserve-3d;
+            will-change: transform; /* اسپیڈ بڑھانے کے لیے */
         }
 
-        @keyframes gameRotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
+        @keyframes gameRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
         .glass-overlay {
             position: absolute; width: 100%; height: 100%;
@@ -54,7 +50,7 @@
 
         .amount { color: #39ff14; font-size: 30px; font-weight: bold; text-shadow: 0 0 15px #39ff14; }
 
-        /* --- 2. GRID & BUTTONS --- */
+        /* --- DASHBOARD & RAINBOW BUTTONS --- */
         .dashboard-container { 
             flex-grow: 1; overflow-y: auto; padding: 25px; 
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
@@ -63,19 +59,14 @@
 
         .tile-btn { 
             position: relative; background: var(--crystal-clr); 
-            backdrop-filter: blur(15px); 
-            
-            /* --- 3. HEAVY RAINBOW MOVING BORDER --- */
-            border: 4px solid transparent; /* موٹی لکیر */
-            border-radius: 25px; 
-            
+            border: 4px solid transparent; border-radius: 25px; 
             padding: 20px; text-decoration: none; color: #fff;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            height: 140px; transition: 0.4s; overflow: hidden;
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 8px 15px rgba(0,0,0,0.4);
+            height: 140px; transition: 0.3s ease; overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
         }
         
-        /* رنگ بدلتی ہوئی موٹی لکیر (شادی کی لائٹیں) */
+        /* رینبو اینیمیٹڈ بارڈر */
         .tile-btn::before {
             content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 25px;
@@ -83,29 +74,22 @@
             background-size: 400%;
             z-index: -1;
             animation: rainbowBorder 8s linear infinite;
-            filter: blur(2px); /* تھوڑی سی چمک */
         }
         
-        /* لکیر کے اندر والا حصہ (تاکہ بٹن کا کلر نظر آئے) */
         .tile-btn::after {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--crystal-clr);
-            border-radius: 21px;
-            z-index: -1;
+            background: var(--crystal-clr); border-radius: 21px; z-index: -1;
         }
 
-        @keyframes rainbowBorder {
-            0% { background-position: 0%; }
-            100% { background-position: 400%; }
-        }
+        @keyframes rainbowBorder { 0% { background-position: 0%; } 100% { background-position: 400%; } }
 
-        .tile-btn:hover { transform: translateY(-8px) scale(1.05); }
+        .tile-btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
 
-        .clr-q { --crystal-clr: rgba(0, 143, 57, 0.5); }
-        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.5); }
-        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.5); }
-        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.5); }
-        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.5); }
+        .clr-q { --crystal-clr: rgba(0, 143, 57, 0.6); }
+        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.6); }
+        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.6); }
+        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
+        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
 
         .icon-box { 
             width: 65px; height: 65px; background: #000; border-radius: 50%; 
@@ -121,105 +105,105 @@
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
     </style>
 </head>
-<body onclick="activateAudioEngine()">
+<body onmouseover="forceAudioInit()">
 
 <audio id="tuut-sfx" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick-sfx" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
-    <div class="profile-section">
+    <div class="profile-section" style="display:flex; align-items:center;">
         <div class="glass-ball-frame">
             <div class="character-spin"></div>
             <div class="glass-overlay"></div>
         </div>
         <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">SULTAN EMPIRE</div>
     </div>
-    <div class="amount" id="rev-count">$19.9840</div>
+    <div class="amount" id="rev-display">$19.9840</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn clr-q quran-btn-bg" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn clr-q quran-btn-bg" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:35px;"></i></div>
         <span class="tile-title">Quran Pak</span>
     </a>
 
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:40px;"></i></div>
         <span class="tile-title">WhatsApp</span>
     </a>
 
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:40px;"></i></div>
         <span class="tile-title">Facebook</span>
     </a>
 
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:38px;"></i></div>
         <span class="tile-title">YouTube</span>
     </a>
 
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">TikTok</span>
     </a>
 
-    <a href="https://www.google.com" target="_blank" class="tile-btn clr-b" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://www.google.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-google" style="color:#4285f4; font-size:35px;"></i></div>
         <span class="tile-title">Google</span>
     </a>
 
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:35px;"></i></div>
         <span class="tile-title">Amazon</span>
     </a>
 
-    <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
+    <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
         <span class="tile-title">Poki Games</span>
     </a>
 
-    <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
+    <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
         <span class="tile-title">Kling AI</span>
     </a>
 
-    <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" style="--crystal-clr:rgba(255,0,255,0.4);" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
+    <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" style="--crystal-clr:rgba(255,0,255,0.4);" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
         <span class="tile-title">Runway AI</span>
     </a>
 
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">AliExpress</span>
     </a>
 
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Alibaba</span>
     </a>
 
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Epic Games</span>
     </a>
 
-    <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
+    <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
         <span class="tile-title">Y8 Games</span>
     </a>
 
-    <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Pika AI</span>
     </a>
 
-    <a href="https://www.bbc.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">BBC News</span>
     </a>
 
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-circle"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Crazy Games</span>
     </a>
 </div>
@@ -227,19 +211,34 @@
 <script>
     const tuut = document.getElementById('tuut-sfx');
     const tick = document.getElementById('tick-sfx');
-    
-    // یوزر کے پہلے کلک پر آڈیو انجن کو آن کرنا (براؤزر کی سیکیورٹی کے لیے ضروری ہے)
-    function activateAudioEngine() { tuut.play().then(()=>tuut.pause()); tick.play().then(()=>tick.pause()); }
-    
-    // ٹیوٹ ٹیوٹ آواز (Hover)
-    function playTuut() { tuut.currentTime = 0; tuut.play().catch(()=>{}); }
-    // ٹک ٹک آواز (Click)
-    function playTick() { tick.currentTime = 0; tick.play().catch(()=>{}); }
+    let audioInitialized = false;
+
+    function forceAudioInit() {
+        if (!audioInitialized) {
+            tuut.play().then(() => { tuut.pause(); tuut.currentTime = 0; });
+            tick.play().then(() => { tick.pause(); tick.currentTime = 0; });
+            audioInitialized = true;
+        }
+    }
+
+    function playTuut() { 
+        if (audioInitialized) {
+            tuut.pause();
+            tuut.currentTime = 0;
+            tuut.play().catch(e => console.log("Audio play blocked"));
+        }
+    }
+
+    function playTick() { 
+        tick.pause();
+        tick.currentTime = 0;
+        tick.play().catch(e => console.log("Audio play blocked"));
+    }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 19.9840; 
     setInterval(() => { 
         income += 0.0004; 
-        document.getElementById('rev-count').innerText = "$" + income.toFixed(4); 
+        document.getElementById('rev-display').innerText = "$" + income.toFixed(4); 
         localStorage.setItem('sultan_income', income); 
     }, 1000);
 </script>
