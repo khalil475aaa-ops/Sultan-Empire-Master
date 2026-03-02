@@ -88,18 +88,19 @@
         .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
         .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
 
-        /* قرآن پاک بٹن کے لیے خاص اسٹائل - تصویر کو بٹن پر لپیٹ دیا گیا ہے */
+        /* قرآن پاک بٹن کی نئی سیٹنگ - اب امیج غائب نہیں ہوگی */
         .quran-btn-custom {
-            background-image: url('https://i.postimg.cc/85zP96Sj/Quran-Alif-19.jpg') !important;
-            background-size: cover !important;
+            background-image: url('https://i.ibb.co/C3Y481L/Quran-Alif-19.jpg') !important;
+            background-size: 100% 100% !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
         }
 
         .icon-box { 
-            width: 65px; height: 65px; background: rgba(0,0,0,0.5); border-radius: 50%; 
+            width: 65px; height: 65px; background: rgba(0,0,0,0.4); border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.2); z-index: 5;
+            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.3); z-index: 5;
+            backdrop-filter: blur(2px);
         }
 
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
