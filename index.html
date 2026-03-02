@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN QURAN EDITION V69.0</title>
+    <title>SULTAN QURAN MASTER V70.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --deep-blue: #000b29; }
         
         body { 
-            margin: 0; background: radial-gradient(circle at center, #001a4d 0%, #000511 100%);
-            color: white; font-family: 'Segoe UI', sans-serif; 
-            display: flex; flex-direction: column; height: 100vh; overflow: hidden; 
+            margin: 0; 
+            background: radial-gradient(circle at center, #001a4d 0%, #000511 100%);
+            color: white; 
+            font-family: 'Segoe UI', sans-serif; display: flex; 
+            flex-direction: column; height: 100vh; overflow: hidden; 
         }
 
         .revenue-header { 
@@ -20,21 +22,23 @@
             align-items: center; box-shadow: 0 5px 25px rgba(0, 11, 41, 0.8); z-index: 100; 
         }
 
-        /* --- 3D ROUND FACE --- */
+        /* --- 3D ROUND FACE (FROM 68) --- */
         .glass-ball-frame {
             width: 85px; height: 85px; position: relative;
             border-radius: 50%; overflow: hidden; border: 2px solid var(--gold);
             box-shadow: 0 0 20px var(--gold); background: #000;
         }
+        
         .character-spin {
             position: absolute; width: 100%; height: 100%;
             background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png') center/cover;
-            border-radius: 50%; animation: gameRotate 6s linear infinite;
+            border-radius: 50%;
+            animation: gameRotate 6s linear infinite;
             transform-style: preserve-3d;
         }
         @keyframes gameRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
-        /* --- BUTTONS & RAINBOW BORDERS --- */
+        /* --- BUTTONS GRID --- */
         .dashboard-container { 
             flex-grow: 1; overflow-y: auto; padding: 25px; 
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
@@ -48,12 +52,14 @@
             height: 140px; transition: 0.3s; overflow: hidden;
             box-shadow: 0 8px 15px rgba(0,0,0,0.4); z-index: 1;
         }
-
-        /* رینبو اینیمیشن */
+        
+        /* RAINBOW BORDER EFFECT */
         .tile-btn::before {
             content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
-            border-radius: 25px; background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
-            background-size: 400%; z-index: -2; animation: rainbow 8s linear infinite;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+            background-size: 400%; z-index: -2;
+            animation: rainbowBorder 8s linear infinite;
         }
         
         .tile-btn::after {
@@ -61,31 +67,34 @@
             background: var(--crystal-clr); border-radius: 21px; z-index: -1;
         }
 
-        @keyframes rainbow { 0% { background-position: 0%; } 100% { background-position: 400%; } }
+        @keyframes rainbowBorder { 0% { background-position: 0%; } 100% { background-position: 400%; } }
 
-        /* قرآن پاک بٹن کی خاص سیٹنگ */
-        .quran-master-btn {
-            background-image: url('https://i.postimg.cc/85zX6p8V/quran-rehal.jpg') !important;
-            background-size: cover !important;
-            background-position: center !important;
+        /* --- EXCLUSIVE QURAN BUTTON DESIGN --- */
+        .quran-special {
+            /* رحل پر کھلا ہوا قرآن پاک جس پر الفاتحہ لکھی ہو */
+            background: url('https://i.ibb.co/q9mNMT0/quran-open-rehal-surah.jpg') center/cover !important;
+            border: 4px solid var(--gold) !important;
         }
-        .quran-master-btn::after { background: rgba(0, 0, 0, 0.4) !important; }
+        /* اگر اوپر والی تصویر لوڈ نہ ہو تو یہ متبادل (Backup) ہے */
+        .quran-special::after {
+            background: rgba(0, 0, 0, 0.2) !important; 
+        }
 
         .icon-box { 
-            width: 60px; height: 60px; background: rgba(0,0,0,0.8); border-radius: 50%; 
+            width: 55px; height: 55px; background: rgba(0,0,0,0.7); border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 8px; border: 1px solid var(--gold);
+            margin-bottom: 8px; border: 1px solid var(--gold); z-index: 2;
         }
 
         .amount { color: #39ff14; font-size: 30px; font-weight: bold; }
-        .clr-q { --crystal-clr: rgba(0, 100, 0, 0.6); }
+        .clr-q { --crystal-clr: rgba(0, 60, 0, 0.7); }
         .clr-w { --crystal-clr: rgba(37, 211, 102, 0.5); }
         .clr-b { --crystal-clr: rgba(13, 71, 161, 0.5); }
         .clr-r { --crystal-clr: rgba(183, 28, 28, 0.5); }
         .clr-g { --crystal-clr: rgba(255, 143, 0, 0.5); }
     </style>
 </head>
-<body onclick="initAudio()">
+<body onclick="startAudioEngine()">
 
 <audio id="tuut" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
@@ -101,16 +110,17 @@
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn clr-q quran-master-btn" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:var(--gold); font-size:35px;"></i></div>
-        <span style="font-weight:bold; text-shadow: 2px 2px 5px #000;">Quran Pak</span>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn clr-q quran-special" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box">
+            <i class="fa-solid fa-book-quran" style="color:var(--gold); font-size:30px;"></i>
+        </div>
+        <span style="font-weight:bold; text-shadow: 2px 2px 8px #000; font-size: 14px; background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 10px;">Al-Fatihah</span>
     </a>
 
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:40px;"></i></div>
         <span>WhatsApp</span>
     </a>
-
     <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:40px;"></i></div>
         <span>Facebook</span>
@@ -176,21 +186,22 @@
 <script>
     const tuut = document.getElementById('tuut');
     const tick = document.getElementById('tick');
-    let isReady = false;
+    let audioReady = false;
 
-    function initAudio() { 
-        if(!isReady) {
+    // آڈیو کو ایکٹیو کرنے کے لیے پہلی بار کلک ضروری ہے
+    function startAudioEngine() {
+        if(!audioReady) {
             tuut.play().then(() => { tuut.pause(); tuut.currentTime = 0; });
             tick.play().then(() => { tick.pause(); tick.currentTime = 0; });
-            isReady = true;
+            audioReady = true;
         }
     }
 
-    function playTuut() { if(isReady) { tuut.currentTime = 0; tuut.play(); } }
-    function playTick() { if(isReady) { tick.currentTime = 0; tick.play(); } }
+    function playTuut() { if(audioReady) { tuut.currentTime = 0; tuut.play(); } }
+    function playTick() { if(audioReady) { tick.currentTime = 0; tick.play(); } }
 
-    let inc = 19.9840; 
-    setInterval(() => { inc += 0.0004; document.getElementById('rev').innerText = "$" + inc.toFixed(4); }, 1000);
+    let count = 19.9840;
+    setInterval(() => { count += 0.0004; document.getElementById('rev').innerText = "$" + count.toFixed(4); }, 1000);
 </script>
 </body>
 </html>
