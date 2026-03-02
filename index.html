@@ -64,6 +64,7 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.4);
         }
         
+        /* رینبو بارڈر حرکت */
         .tile-btn::before {
             content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 25px;
@@ -80,35 +81,30 @@
 
         @keyframes rainbowBorder { 0% { background-position: 0%; } 100% { background-position: 400%; } }
 
-        .tile-btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
-
-        /* قرآن پاک بٹن کے لیے مخصوص اسٹائل */
-        .quran-btn-full {
-            /* آپ کی دی ہوئی تصویر یہاں استعمال کی گئی ہے */
+        /* قرآن پاک بٹن کے لیے سپیشل کلاس */
+        .quran-btn-fixed {
             background-image: url('https://i.postimg.cc/k47v9Hk2/Quran-Alif-19.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
             border: none !important;
         }
 
-        .quran-btn-full::after {
-            /* تصویر کو تھوڑا گہرا کرنے کے لیے تاکہ آئیکن اور ٹیکسٹ واضح ہو */
-            background: rgba(0, 0, 0, 0.3) !important;
+        .quran-btn-fixed::after {
+            background: rgba(0, 0, 0, 0.2) !important; /* تصویر کو واضح رکھنے کے لیے ہلکا سایہ */
         }
 
-        .clr-q { --crystal-clr: rgba(0, 143, 57, 0.6); }
-        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.6); }
-        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.6); }
-        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
-        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
+        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.5); }
+        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.5); }
+        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.5); }
+        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.5); }
 
         .icon-box { 
-            width: 65px; height: 65px; background: rgba(0,0,0,0.7); border-radius: 50%; 
+            width: 60px; height: 60px; background: rgba(0,0,0,0.6); border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.2); z-index: 5;
+            margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.3); z-index: 5;
         }
 
-        .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
+        .tile-title { font-size: 12px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
     </style>
 </head>
 <body onmouseover="forceAudioInit()">
@@ -128,89 +124,34 @@
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn-full" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:35px;"></i></div>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn-fixed" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:30px;"></i></div>
         <span class="tile-title">Quran Pak</span>
     </a>
 
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:40px;"></i></div>
+        <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:35px;"></i></div>
         <span class="tile-title">WhatsApp</span>
     </a>
 
     <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:40px;"></i></div>
+        <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:35px;"></i></div>
         <span class="tile-title">Facebook</span>
     </a>
 
     <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:38px;"></i></div>
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:35px;"></i></div>
         <span class="tile-title">YouTube</span>
     </a>
 
     <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:35px;"></i></div>
+        <div class="icon-box"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">TikTok</span>
     </a>
 
-    <a href="https://www.google.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-google" style="color:#4285f4; font-size:35px;"></i></div>
-        <span class="tile-title">Google</span>
-    </a>
-
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:35px;"></i></div>
-        <span class="tile-title">Amazon</span>
-    </a>
-
     <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
+        <div class="icon-box"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:35px;"></i></div>
         <span class="tile-title">Poki Games</span>
-    </a>
-
-    <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
-        <span class="tile-title">Kling AI</span>
-    </a>
-
-    <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" style="--crystal-clr:rgba(255,0,255,0.4);" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
-        <span class="tile-title">Runway AI</span>
-    </a>
-
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
-        <span class="tile-title">AliExpress</span>
-    </a>
-
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
-        <span class="tile-title">Alibaba</span>
-    </a>
-
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
-        <span class="tile-title">Epic Games</span>
-    </a>
-
-    <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
-        <span class="tile-title">Y8 Games</span>
-    </a>
-
-    <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
-        <span class="tile-title">Pika AI</span>
-    </a>
-
-    <a href="https://www.bbc.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
-        <span class="tile-title">BBC News</span>
-    </a>
-
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
-        <span class="tile-title">Crazy Games</span>
     </a>
 </div>
 
@@ -229,16 +170,14 @@
 
     function playTuut() { 
         if (audioInitialized) {
-            tuut.pause();
-            tuut.currentTime = 0;
-            tuut.play().catch(e => console.log("Audio play blocked"));
+            tuut.pause(); tuut.currentTime = 0;
+            tuut.play().catch(e => {});
         }
     }
 
     function playTick() { 
-        tick.pause();
-        tick.currentTime = 0;
-        tick.play().catch(e => console.log("Audio play blocked"));
+        tick.pause(); tick.currentTime = 0;
+        tick.play().catch(e => {});
     }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 19.9840; 
@@ -249,6 +188,5 @@
     }, 1000);
 </script>
 
-<script src="https://pl28819672.effectivegatecpm.com/10/26/a8/1026a8fd412ba6e1ba7f87f0434b96e2.js"></script>
 </body>
 </html>
