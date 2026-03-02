@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN QURAN MASTER V70.0</title>
+    <title>SULTAN QURAN IMAGE HUB V71.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --deep-blue: #000b29; }
@@ -35,13 +35,15 @@
             border-radius: 50%;
             animation: gameRotate 6s linear infinite;
             transform-style: preserve-3d;
+            will-change: transform;
         }
         @keyframes gameRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
-        /* --- BUTTONS GRID --- */
+        /* --- DASHBOARD & RAINBOW BUTTONS --- */
         .dashboard-container { 
             flex-grow: 1; overflow-y: auto; padding: 25px; 
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+            background: rgba(0, 11, 41, 0.3); backdrop-filter: blur(5px);
         }
 
         .tile-btn { 
@@ -49,11 +51,10 @@
             border: 4px solid transparent; border-radius: 25px; 
             padding: 20px; text-decoration: none; color: #fff;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            height: 140px; transition: 0.3s; overflow: hidden;
+            height: 140px; transition: 0.3s ease; overflow: hidden;
             box-shadow: 0 8px 15px rgba(0,0,0,0.4); z-index: 1;
         }
         
-        /* RAINBOW BORDER EFFECT */
         .tile-btn::before {
             content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 25px;
@@ -69,32 +70,33 @@
 
         @keyframes rainbowBorder { 0% { background-position: 0%; } 100% { background-position: 400%; } }
 
-        /* --- EXCLUSIVE QURAN BUTTON DESIGN --- */
-        .quran-special {
-            /* رحل پر کھلا ہوا قرآن پاک جس پر الفاتحہ لکھی ہو */
-            background: url('https://i.ibb.co/q9mNMT0/quran-open-rehal-surah.jpg') center/cover !important;
+        /* --- THE UPLOADED QURAN IMAGE BUTTON --- */
+        .quran-btn-new {
+            background: url('https://i.ibb.co/3yk3mG4/Quran-Alif-19.jpg') center/contain no-repeat !important;
+            background-color: #002b16 !important; /* قرآن پاک کے رنگ سے میچ کرتا بیک گراؤنڈ */
             border: 4px solid var(--gold) !important;
         }
-        /* اگر اوپر والی تصویر لوڈ نہ ہو تو یہ متبادل (Backup) ہے */
-        .quran-special::after {
-            background: rgba(0, 0, 0, 0.2) !important; 
+        .quran-label {
+            position: absolute; bottom: 5px; background: rgba(0,0,0,0.7);
+            padding: 2px 10px; border-radius: 10px; font-size: 12px; color: var(--gold);
+            font-weight: bold; border: 1px solid var(--gold);
         }
 
         .icon-box { 
-            width: 55px; height: 55px; background: rgba(0,0,0,0.7); border-radius: 50%; 
+            width: 65px; height: 65px; background: #000; border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 8px; border: 1px solid var(--gold); z-index: 2;
+            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.2); z-index: 5;
         }
 
-        .amount { color: #39ff14; font-size: 30px; font-weight: bold; }
-        .clr-q { --crystal-clr: rgba(0, 60, 0, 0.7); }
-        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.5); }
-        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.5); }
-        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.5); }
-        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.5); }
+        .amount { color: #39ff14; font-size: 30px; font-weight: bold; text-shadow: 0 0 15px #39ff14; }
+        .clr-q { --crystal-clr: rgba(0, 43, 22, 0.8); }
+        .clr-w { --crystal-clr: rgba(37, 211, 102, 0.6); }
+        .clr-b { --crystal-clr: rgba(13, 71, 161, 0.6); }
+        .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
+        .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
     </style>
 </head>
-<body onclick="startAudioEngine()">
+<body onmouseover="initAudioEngine()">
 
 <audio id="tuut" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
@@ -106,102 +108,98 @@
         </div>
         <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">SULTAN EMPIRE</div>
     </div>
-    <div class="amount" id="rev">$19.9840</div>
+    <div class="amount" id="rev-val">$19.9840</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn clr-q quran-special" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-book-quran" style="color:var(--gold); font-size:30px;"></i>
-        </div>
-        <span style="font-weight:bold; text-shadow: 2px 2px 8px #000; font-size: 14px; background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 10px;">Al-Fatihah</span>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn-new" onmouseover="playTuut()" onmousedown="playTick()">
+        <span class="quran-label">قرآن پاک</span>
     </a>
 
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:40px;"></i></div>
-        <span>WhatsApp</span>
+        <span style="font-size:11px; font-weight:bold;">WhatsApp</span>
     </a>
     <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:40px;"></i></div>
-        <span>Facebook</span>
+        <span style="font-size:11px; font-weight:bold;">Facebook</span>
     </a>
     <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:40px;"></i></div>
-        <span>YouTube</span>
+        <span style="font-size:11px; font-weight:bold;">YouTube</span>
     </a>
     <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:35px;"></i></div>
-        <span>TikTok</span>
+        <span style="font-size:11px; font-weight:bold;">TikTok</span>
     </a>
     <a href="https://www.google.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-google" style="color:#4285f4; font-size:35px;"></i></div>
-        <span>Google</span>
+        <span style="font-size:11px; font-weight:bold;">Google</span>
     </a>
     <a href="https://www.amazon.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:35px;"></i></div>
-        <span>Amazon</span>
+        <span style="font-size:11px; font-weight:bold;">Amazon</span>
     </a>
     <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
-        <span>Kling AI</span>
+        <span style="font-size:11px; font-weight:bold;">Kling AI</span>
     </a>
     <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
-        <span>Runway AI</span>
+        <span style="font-size:11px; font-weight:bold;">Runway AI</span>
     </a>
     <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
-        <span>AliExpress</span>
+        <span style="font-size:11px; font-weight:bold;">AliExpress</span>
     </a>
     <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
-        <span>Alibaba</span>
+        <span style="font-size:11px; font-weight:bold;">Alibaba</span>
     </a>
     <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
-        <span>Epic Games</span>
+        <span style="font-size:11px; font-weight:bold;">Epic Games</span>
     </a>
     <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
-        <span>Y8 Games</span>
+        <span style="font-size:11px; font-weight:bold;">Y8 Games</span>
     </a>
     <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
-        <span>Pika AI</span>
+        <span style="font-size:11px; font-weight:bold;">Pika AI</span>
     </a>
     <a href="https://www.bbc.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
-        <span>BBC News</span>
+        <span style="font-size:11px; font-weight:bold;">BBC News</span>
     </a>
     <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
-        <span>Poki Games</span>
+        <span style="font-size:11px; font-weight:bold;">Poki Games</span>
     </a>
     <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
-        <span>Crazy Games</span>
+        <span style="font-size:11px; font-weight:bold;">Crazy Games</span>
     </a>
 </div>
 
 <script>
     const tuut = document.getElementById('tuut');
     const tick = document.getElementById('tick');
-    let audioReady = false;
+    let isAudioOn = false;
 
-    // آڈیو کو ایکٹیو کرنے کے لیے پہلی بار کلک ضروری ہے
-    function startAudioEngine() {
-        if(!audioReady) {
+    function initAudioEngine() {
+        if(!isAudioOn) {
             tuut.play().then(() => { tuut.pause(); tuut.currentTime = 0; });
             tick.play().then(() => { tick.pause(); tick.currentTime = 0; });
-            audioReady = true;
+            isAudioOn = true;
         }
     }
 
-    function playTuut() { if(audioReady) { tuut.currentTime = 0; tuut.play(); } }
-    function playTick() { if(audioReady) { tick.currentTime = 0; tick.play(); } }
+    function playTuut() { if(isAudioOn) { tuut.currentTime = 0; tuut.play().catch(e=>{}); } }
+    function playTick() { if(isAudioOn) { tick.currentTime = 0; tick.play().catch(e=>{}); } }
 
-    let count = 19.9840;
-    setInterval(() => { count += 0.0004; document.getElementById('rev').innerText = "$" + count.toFixed(4); }, 1000);
+    let income = 19.9840;
+    setInterval(() => { income += 0.0004; document.getElementById('rev-val').innerText = "$" + income.toFixed(4); }, 1000);
 </script>
 </body>
 </html>
