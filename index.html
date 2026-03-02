@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN NEON HUB V38.0 (SOUND EDITION)</title>
+    <title>SULTAN NEON HUB V39.0</title>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,7 +24,7 @@
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
         }
 
-        /* --- KEYBOARD BUTTON STYLE (NO CHANGES IN DESIGN) --- */
+        /* --- KEYBOARD BUTTON STYLE (NO CHANGES) --- */
         .tile-btn { 
             position: relative; 
             background: rgba(255, 255, 255, 0.08); 
@@ -76,91 +76,93 @@
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
-<body onclick="playClickSound()"> <audio id="click-sound" src="https://www.soundjay.com/buttons/button-16.mp3" preload="auto"></audio>
+<body>
+
+<audio id="keypad-tone" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
     <div style="font-weight:bold; color:var(--gold);">SULTAN NEON HUB</div>
     <div class="amount" id="main-income">$2.9624</div>
-    <div style="font-size: 10px; color: #888;">TIK-TIK V38.0</div>
+    <div style="font-size: 10px; color: #888;">TONE EDITION V39.0</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn glow-green">
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn glow-green" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#00ff88;"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:28px;"></i></div>
         <span class="tile-title">Quran Pak</span>
     </a>
-    <a href="https://www.google.com" target="_blank" class="tile-btn glow-blue">
+    <a href="https://www.google.com" target="_blank" class="tile-btn glow-blue" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#4285f4;"><i class="fa-brands fa-google" style="color:#4285f4; font-size:28px;"></i></div>
         <span class="tile-title">Google</span>
     </a>
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn glow-green">
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn glow-green" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#25d366;"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:30px;"></i></div>
         <span class="tile-title">WhatsApp</span>
     </a>
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn glow-blue">
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn glow-blue" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#1877f2;"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:30px;"></i></div>
         <span class="tile-title">Facebook</span>
     </a>
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ff0000;"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:28px;"></i></div>
         <span class="tile-title">YouTube</span>
     </a>
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn glow-gold">
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#fff;"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:28px;"></i></div>
         <span class="tile-title">TikTok</span>
     </a>
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn glow-gold">
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ff9900;"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:26px;"></i></div>
         <span class="tile-title">Amazon</span>
     </a>
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ff6a00;"><i class="fa-solid fa-box" style="color:#ff6a00; font-size:24px;"></i></div>
         <span class="tile-title">Alibaba</span>
     </a>
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#e62e04;"><i class="fa-solid fa-cart-shopping" style="color:#e62e04; font-size:24px;"></i></div>
         <span class="tile-title">AliExpress</span>
     </a>
-    <a href="https://www.poki.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.poki.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ff3e3e;"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:26px;"></i></div>
         <span class="tile-title">Poki Games</span>
     </a>
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn glow-gold">
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ffd700;"><i class="fa-solid fa-headset" style="color:#ffd700; font-size:26px;"></i></div>
         <span class="tile-title">Crazy Games</span>
     </a>
-    <a href="https://runwayml.com" target="_blank" class="tile-btn glow-gold" style="box-shadow: 0 12px 25px -5px #ff00ff, 0 6px 0px rgba(0,0,0,0.6);">
+    <a href="https://runwayml.com" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()" style="box-shadow: 0 12px 25px -5px #ff00ff, 0 6px 0px rgba(0,0,0,0.6);">
         <div class="icon-circle" style="border-color:#ff00ff;"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:24px;"></i></div>
         <span class="tile-title">Runway AI</span>
     </a>
-    <a href="https://klingai.com" target="_blank" class="tile-btn glow-blue" style="box-shadow: 0 12px 25px -5px #00f2ff, 0 6px 0px rgba(0,0,0,0.6);">
+    <a href="https://klingai.com" target="_blank" class="tile-btn glow-blue" onmousedown="playTone()" style="box-shadow: 0 12px 25px -5px #00f2ff, 0 6px 0px rgba(0,0,0,0.6);">
         <div class="icon-circle" style="border-color:#00f2ff;"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:24px;"></i></div>
         <span class="tile-title">Kling AI</span>
     </a>
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn glow-gold">
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#fff;"><i class="fa-solid fa-gun" style="color:#fff; font-size:24px;"></i></div>
         <span class="tile-title">Epic Games</span>
     </a>
-    <a href="https://www.y8.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.y8.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#ff0000;"><i class="fa-solid fa-circle-play" style="color:#ff0000; font-size:26px;"></i></div>
         <span class="tile-title">Y8 Games</span>
     </a>
-    <a href="https://pika.art" target="_blank" class="tile-btn glow-gold">
+    <a href="https://pika.art" target="_blank" class="tile-btn glow-gold" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#fff;"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:24px;"></i></div>
         <span class="tile-title">Pika AI</span>
     </a>
-    <a href="https://www.bbc.com" target="_blank" class="tile-btn glow-red">
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn glow-red" onmousedown="playTone()">
         <div class="icon-circle" style="border-color:#bb1919;"><i class="fa-solid fa-newspaper" style="color:#bb1919; font-size:24px;"></i></div>
         <span class="tile-title">BBC News</span>
     </a>
 </div>
 
 <script>
-    // Awaaz bajane wala function
-    function playClickSound() {
-        let sound = document.getElementById('click-sound');
-        sound.currentTime = 0;
-        sound.play();
+    // Mobile Keypad Tone function
+    function playTone() {
+        let tone = document.getElementById('keypad-tone');
+        tone.currentTime = 0;
+        tone.play();
     }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 2.9624; 
