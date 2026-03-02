@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN NEON HUB V41.0</title>
+    <title>SULTAN NEON HUB V44.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --bg: #050505; }
@@ -19,13 +19,32 @@
             align-items: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); z-index: 100; 
         }
         .profile-section { display: flex; align-items: center; gap: 10px; }
+        
+        /* --- ROTATING & CLICKABLE AVATAR --- */
+        .user-avatar-container { position: relative; cursor: pointer; }
         .user-avatar {
-            width: 45px; height: 45px; border-radius: 50%; 
-            border: 2px solid var(--gold); background: #222;
-            overflow: hidden; box-shadow: 0 0 10px var(--gold);
+            width: 55px; height: 55px; border-radius: 50%; 
+            border: 3px solid var(--gold); background: #111;
+            overflow: hidden; box-shadow: 0 0 15px var(--gold);
             display: flex; justify-content: center; align-items: center;
+            animation: rotateAvatar 10s linear infinite;
         }
         .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Chota Camera Icon for Upload Hint */
+        .upload-hint {
+            position: absolute; bottom: 0; right: 0; 
+            background: var(--gold); color: black; border-radius: 50%;
+            width: 18px; height: 18px; font-size: 10px;
+            display: flex; justify-content: center; align-items: center;
+            border: 1px solid black; z-index: 5;
+        }
+
+        @keyframes rotateAvatar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .amount { color: #39ff14; font-size: 28px; font-weight: bold; text-shadow: 0 0 10px #39ff14; }
         
         .dashboard-container { 
@@ -52,20 +71,8 @@
             box-shadow: 0 6px 0px rgba(0,0,0,0.6); 
         }
 
-        /* Hover Effect */
-        .tile-btn:hover {
-            top: -2px;
-            box-shadow: 0 8px 0px rgba(0,0,0,0.7);
-            filter: brightness(1.2);
-        }
-
-        /* Active: Keyboard Press */
-        .tile-btn:active {
-            top: 6px; 
-            box-shadow: 0 0px 0px transparent; 
-            filter: brightness(2.0) saturate(1.5); 
-            transform: translateY(2px);
-        }
+        .tile-btn:hover { top: -2px; box-shadow: 0 8px 0px rgba(0,0,0,0.7); filter: brightness(1.2); }
+        .tile-btn:active { top: 6px; box-shadow: 0 0px 0px transparent; filter: brightness(2.0) saturate(1.5); transform: translateY(2px); }
 
         .icon-circle {
             width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(255, 215, 0, 0.8);
@@ -78,19 +85,28 @@
         .glow-red { box-shadow: 0 12px 25px -5px rgba(255, 0, 0, 0.7), 0 6px 0px rgba(0,0,0,0.6); }
         .glow-gold { box-shadow: 0 12px 25px -5px rgba(255, 215, 0, 0.7), 0 6px 0px rgba(0,0,0,0.6); }
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        
+        /* Hidden Input */
+        #file-input { display: none; }
     </style>
 </head>
-<body onclick="enableAudio()"> <audio id="keypad-tone" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+<body onclick="enableAudio()">
+
+<audio id="keypad-tone" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
     <div class="profile-section">
-        <div class="user-avatar">
-            <img src="https://via.placeholder.com/150" alt="Sultan">
+        <div class="user-avatar-container" onclick="document.getElementById('file-input').click()">
+            <div class="user-avatar" id="avatar-box">
+                <img src="https://via.placeholder.com/150" alt="Sultan" id="display-pic">
+            </div>
+            <div class="upload-hint"><i class="fa-solid fa-camera"></i></div>
+            <input type="file" id="file-input" accept="image/*" onchange="updateImage(this)">
         </div>
         <div style="font-weight:bold; color:var(--gold); font-size: 14px;">SULTAN EMPIRE</div>
     </div>
     <div class="amount" id="main-income">$2.9624</div>
-    <div style="font-size: 9px; color: #888;">FIXED SOUND V41.0</div>
+    <div style="font-size: 9px; color: #888;">CONTROL V44.0</div>
 </div>
 
 <div class="dashboard-container">
@@ -165,24 +181,36 @@
 </div>
 
 <script>
-    let audioContextEnabled = false;
+    // Sultan's Image Picker Function
+    function updateImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('display-pic').src = e.target.result;
+                // Save to local storage so it stays after refresh
+                localStorage.setItem('sultan_profile_pic', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Load saved image on start
+    window.onload = function() {
+        var savedPic = localStorage.getItem('sultan_profile_pic');
+        if (savedPic) {
+            document.getElementById('display-pic').src = savedPic;
+        }
+    };
 
     function enableAudio() {
-        if (!audioContextEnabled) {
-            let tone = document.getElementById('keypad-tone');
-            tone.play().then(() => {
-                tone.pause();
-                audioContextEnabled = true;
-                console.log("Audio Enabled");
-            }).catch(e => console.log("Waiting for click..."));
-        }
+        let tone = document.getElementById('keypad-tone');
+        tone.play().then(() => { tone.pause(); }).catch(e => {});
     }
 
     function playTone() {
         let tone = document.getElementById('keypad-tone');
         tone.currentTime = 0;
-        tone.volume = 0.5; // Sound Volume
-        tone.play().catch(e => console.log("Interaction required"));
+        tone.play().catch(e => {});
     }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 2.9624; 
