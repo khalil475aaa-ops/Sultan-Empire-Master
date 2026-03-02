@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN NEON HUB V60.0</title>
+    <title>SULTAN FUTURE-TECH V61.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --gold: #ffd700; --bg: #050505; --neon-green: #39ff14; }
+        :root { --gold: #ffd700; --bg: #020202; --neon-green: #39ff14; }
         body { 
             margin: 0; background: var(--bg); color: white; 
             font-family: 'Segoe UI', sans-serif; display: flex; 
@@ -14,164 +14,182 @@
         }
         
         .revenue-header { 
-            background: #000; border-bottom: 2px solid var(--gold); 
-            padding: 10px 20px; display: flex; justify-content: space-between; 
-            align-items: center; box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); z-index: 100; 
+            background: #000; border-bottom: 3px solid var(--gold); 
+            padding: 12px 25px; display: flex; justify-content: space-between; 
+            align-items: center; box-shadow: 0 5px 30px rgba(255, 215, 0, 0.4); z-index: 100; 
         }
 
-        /* --- 1. PERFECT 3D SPHERE (Full Face Visible) --- */
+        /* --- 1. THE ADVANCED 3D SOLID SPHERE (No Paper Thin Line) --- */
         .profile-section { display: flex; align-items: center; gap: 15px; }
-        .sphere-container { width: 75px; height: 75px; perspective: 1000px; }
-        .sphere-ball {
+        .sphere-box { width: 80px; height: 80px; perspective: 1200px; }
+        .sphere-main {
             width: 100%; height: 100%; position: relative;
-            transform-style: preserve-3d; animation: rotateFull 10s linear infinite;
+            transform-style: preserve-3d; animation: rotate3D 8s linear infinite;
         }
-        .sphere-ball::before, .sphere-ball::after {
-            content: ''; position: absolute; width: 100%; height: 100%;
-            border-radius: 50%; 
-            background: #111 url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png');
-            background-size: contain; /* اب چہرہ پورا نظر آئے گا */
-            background-repeat: no-repeat;
-            background-position: center;
-            border: 3px solid var(--gold); box-shadow: 0 0 20px var(--gold);
+        /* 3D گیند بنانے کے لیے ملٹی لیئرز */
+        .sphere-layer {
+            position: absolute; width: 100%; height: 100%;
+            border-radius: 50%; border: 2px solid var(--gold);
+            background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png');
+            background-size: 140%; /* چہرہ بڑا کر کے فٹ کیا */
+            background-position: center 20%; /* صرف چہرے پر فوکس */
+            box-shadow: inset 0 0 20px #000, 0 0 15px var(--gold);
+            backface-visibility: visible;
         }
-        .sphere-ball::after { transform: rotateY(180deg); }
-        @keyframes rotateFull { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+        .layer-1 { transform: rotateY(0deg) translateZ(2px); }
+        .layer-2 { transform: rotateY(90deg) translateZ(2px); } /* یہ لکیر ختم کر دے گا */
+        
+        @keyframes rotate3D { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
-        .amount { color: var(--neon-green); font-size: 28px; font-weight: bold; text-shadow: 0 0 15px var(--neon-green); }
+        .amount { color: var(--neon-green); font-size: 32px; font-weight: bold; text-shadow: 0 0 20px var(--neon-green); }
 
-        /* --- 2. GLASS BUTTONS WITH INTERNAL GLOW --- */
+        /* --- 2. FULL COLOR GLASS BUTTONS --- */
         .dashboard-container { 
-            flex-grow: 1; overflow-y: auto; padding: 20px; 
-            display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+            flex-grow: 1; overflow-y: auto; padding: 25px; 
+            display: grid; gap: 25px; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); 
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
 
         .tile-btn { 
-            position: relative; background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px; padding: 15px; text-decoration: none; color: #fff;
+            position: relative; 
+            background: var(--btn-bg); /* اب بٹن کا اپنا کلر ہے */
+            backdrop-filter: blur(10px); 
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 22px; padding: 18px; text-decoration: none; color: #fff;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            height: 130px; transition: 0.3s; overflow: hidden;
+            height: 145px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
         }
 
-        /* Internal Bulb Glow */
+        /* Under-glow Bulb */
         .tile-btn::after {
-            content: ''; position: absolute; bottom: -10px; width: 80%; height: 40%;
-            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
-            opacity: 0.5; filter: blur(10px);
+            content: ''; position: absolute; bottom: -15px; width: 100%; height: 50%;
+            background: radial-gradient(circle, white 0%, transparent 70%);
+            opacity: 0.3; filter: blur(12px);
         }
-        .tile-btn:hover { border-color: var(--glow-color); transform: scale(1.05); }
+
+        .tile-btn:hover { 
+            transform: translateY(-10px) scale(1.05); 
+            border-color: #fff; box-shadow: 0 20px 40px var(--btn-glow); 
+        }
         
-        .glow-green { --glow-color: #25d366; }
-        .glow-blue { --glow-color: #1877f2; }
-        .glow-red { --glow-color: #ff0000; }
-        .glow-gold { --glow-color: #ffd700; }
+        /* کلر سیٹنگز (بٹن کا کلر اب لائٹ جیسا ہے) */
+        .glow-green { --btn-bg: rgba(37, 211, 102, 0.25); --btn-glow: rgba(37, 211, 102, 0.6); }
+        .glow-blue { --btn-bg: rgba(24, 119, 242, 0.25); --btn-glow: rgba(24, 119, 242, 0.6); }
+        .glow-red { --btn-bg: rgba(255, 0, 0, 0.25); --btn-glow: rgba(255, 0, 0, 0.6); }
+        .glow-gold { --btn-bg: rgba(255, 215, 0, 0.25); --btn-glow: rgba(255, 215, 0, 0.6); }
 
-        /* --- 3. SPECIAL OPEN QURAN ON REHAL --- */
+        /* --- 3. QURAN OPEN ON REHAL (Latest Image) --- */
         .quran-btn {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img.freepik.com/premium-photo/holy-quran-open-with-rehal_1029473-152230.jpg');
-            background-size: cover; border: 4px solid #00ff88 !important; --glow-color: #00ff88;
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://img.freepik.com/premium-photo/holy-quran-open-with-rehal_1029473-152230.jpg');
+            background-size: cover; border: 4px solid #00ff88 !important;
+            --btn-bg: rgba(0, 255, 136, 0.3); --btn-glow: rgba(0, 255, 136, 0.8);
         }
 
-        .icon-circle { width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; margin-bottom: 8px; }
-        .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; text-shadow: 0 2px 4px #000; }
+        .icon-circle { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; }
+        .tile-title { font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 5px #000; }
     </style>
 </head>
-<body onclick="startAudio()">
+<body onclick="unlockAudio()">
 
-<audio id="keypad-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
-<audio id="tuut-sound" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
+<audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+<audio id="hover-sound" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
     <div class="profile-section">
-        <div class="sphere-container"><div class="sphere-ball"></div></div>
-        <div style="font-weight:bold; color:var(--gold); font-size: 16px; margin-left: 10px;">SULTAN EMPIRE</div>
+        <div class="sphere-box">
+            <div class="sphere-main">
+                <div class="sphere-layer layer-1"></div>
+                <div class="sphere-layer layer-2"></div>
+            </div>
+        </div>
+        <div style="font-weight:bold; color:var(--gold); font-size: 20px; letter-spacing: 1px;">SULTAN EMPIRE</div>
     </div>
-    <div class="amount" id="income-box">$19.9840</div>
+    <div class="amount" id="revenue-val">$19.9840</div>
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:40px;"></i></div>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:45px;"></i></div>
         <span class="tile-title">Quran Pak</span>
     </a>
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn glow-green" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:35px;"></i></div>
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn glow-green" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-whatsapp" style="color:#fff; font-size:40px;"></i></div>
         <span class="tile-title">WhatsApp</span>
     </a>
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:35px;"></i></div>
-        <span class="tile-title">Facebook</span>
-    </a>
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:32px;"></i></div>
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-youtube" style="color:#fff; font-size:40px;"></i></div>
         <span class="tile-title">YouTube</span>
     </a>
-    <a href="https://www.google.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-google" style="color:#4285f4; font-size:30px;"></i></div>
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-facebook" style="color:#fff; font-size:40px;"></i></div>
+        <span class="tile-title">Facebook</span>
+    </a>
+    <a href="https://www.google.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-google" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Google</span>
     </a>
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:30px;"></i></div>
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">TikTok</span>
     </a>
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:28px;"></i></div>
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-brands fa-amazon" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Amazon</span>
     </a>
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-box" style="color:#ff6a00; font-size:26px;"></i></div>
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Alibaba</span>
     </a>
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-cart-shopping" style="color:#e62e04; font-size:26px;"></i></div>
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">AliExpress</span>
     </a>
-    <a href="https://www.poki.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:28px;"></i></div>
+    <a href="https://www.poki.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-gamepad" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Poki Games</span>
     </a>
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-headset" style="color:#ffd700; font-size:28px;"></i></div>
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Crazy Games</span>
     </a>
-    <a href="https://runwayml.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()" style="--glow-color:#ff00ff;">
-        <div class="icon-circle"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:26px;"></i></div>
+    <a href="https://runwayml.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()" style="--btn-bg:rgba(255,0,255,0.25); --btn-glow:magenta;">
+        <div class="icon-circle"><i class="fa-solid fa-video" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Runway AI</span>
     </a>
-    <a href="https://klingai.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playTuut()" onmousedown="playKeypad()" style="--glow-color:#00f2ff;">
-        <div class="icon-circle"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:26px;"></i></div>
+    <a href="https://klingai.com" target="_blank" class="tile-btn glow-blue" onmouseenter="playHover()" onmousedown="playClick()" style="--btn-bg:rgba(0,242,255,0.25); --btn-glow:cyan;">
+        <div class="icon-circle"><i class="fa-solid fa-robot" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Kling AI</span>
     </a>
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-gun" style="color:#fff; font-size:26px;"></i></div>
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Epic Games</span>
     </a>
-    <a href="https://www.y8.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-circle-play" style="color:#ff0000; font-size:28px;"></i></div>
+    <a href="https://www.y8.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Y8 Games</span>
     </a>
-    <a href="https://pika.art" target="_blank" class="tile-btn glow-gold" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:26px;"></i></div>
+    <a href="https://pika.art" target="_blank" class="tile-btn glow-gold" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Pika AI</span>
     </a>
-    <a href="https://www.bbc.com" target="_blank" class="tile-btn glow-red" onmouseenter="playTuut()" onmousedown="playKeypad()">
-        <div class="icon-circle"><i class="fa-solid fa-newspaper" style="color:#bb1919; font-size:26px;"></i></div>
+    <a href="https://www.bbc.com" target="_blank" class="tile-btn glow-red" onmouseenter="playHover()" onmousedown="playClick()">
+        <div class="icon-circle"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">BBC News</span>
     </a>
 </div>
 
 <script>
-    const kp = document.getElementById('keypad-sound');
-    const tt = document.getElementById('tuut-sound');
-    function startAudio() { kp.play().then(()=>kp.pause()); tt.play().then(()=>tt.pause()); }
-    function playTuut() { tt.currentTime = 0; tt.play().catch(()=>{}); }
-    function playKeypad() { kp.currentTime = 0; kp.play().catch(()=>{}); }
+    const clickSfx = document.getElementById('click-sound');
+    const hoverSfx = document.getElementById('hover-sound');
+    function unlockAudio() { clickSfx.play().then(()=>clickSfx.pause()); hoverSfx.play().then(()=>hoverSfx.pause()); }
+    function playClick() { clickSfx.currentTime = 0; clickSfx.play().catch(()=>{}); }
+    function playHover() { hoverSfx.currentTime = 0; hoverSfx.play().catch(()=>{}); }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 19.9840; 
     setInterval(() => { 
         income += 0.0004; 
-        document.getElementById('income-box').innerText = "$" + income.toFixed(4); 
+        document.getElementById('revenue-val').innerText = "$" + income.toFixed(4); 
         localStorage.setItem('sultan_income', income); 
     }, 1000);
 </script>
