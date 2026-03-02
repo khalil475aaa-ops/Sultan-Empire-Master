@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN NEON HUB V34.0</title>
+    <title>SULTAN NEON HUB V38.0 (SOUND EDITION)</title>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,13 +24,13 @@
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
         }
 
-        /* --- ASLI KEYBOARD BUTTON STYLE --- */
+        /* --- KEYBOARD BUTTON STYLE (NO CHANGES IN DESIGN) --- */
         .tile-btn { 
             position: relative; 
             background: rgba(255, 255, 255, 0.08); 
             backdrop-filter: blur(12px); 
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px; /* Premium Gol Kone */
+            border-radius: 15px; 
             padding: 15px; 
             text-decoration: none; 
             color: #fff;
@@ -39,23 +39,21 @@
             justify-content: center; 
             align-items: center; 
             height: 120px;
-            top: 0; /* Shuru ki position */
+            top: 0; 
             transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            /* 3D Keyboard Base Shadow */
             box-shadow: 0 6px 0px rgba(0,0,0,0.6); 
         }
 
-        /* Hover: Mouse upar jane par */
         .tile-btn:hover {
             top: -2px;
             box-shadow: 0 8px 0px rgba(0,0,0,0.7);
         }
 
-        /* DABNE WALA JADU: Jab ungli se dabayein */
+        /* DABNE WALA JADU + LIGHT BLAST */
         .tile-btn:active {
-            top: 6px; /* Button 6px niche dabe ga */
-            box-shadow: 0 0px 0px transparent; /* Base shadow khatam */
-            filter: brightness(2.0) saturate(1.5); /* LIGHT FULL TEZ AUR RANGEEN! */
+            top: 6px; 
+            box-shadow: 0 0px 0px transparent; 
+            filter: brightness(2.0) saturate(1.5); 
             transform: translateY(2px);
         }
 
@@ -66,13 +64,11 @@
             transition: all 0.1s ease;
         }
 
-        /* Button dabte hi icon ko bhi chamkayein */
         .tile-btn:active .icon-circle {
             border-color: #fff;
             box-shadow: 0 0 20px #fff;
         }
 
-        /* Underglow Settings - Wahi purani High Quality Lighting */
         .glow-green { box-shadow: 0 12px 25px -5px rgba(37, 211, 102, 0.7), 0 6px 0px rgba(0,0,0,0.6); }
         .glow-blue { box-shadow: 0 12px 25px -5px rgba(24, 119, 242, 0.7), 0 6px 0px rgba(0,0,0,0.6); }
         .glow-red { box-shadow: 0 12px 25px -5px rgba(255, 0, 0, 0.7), 0 6px 0px rgba(0,0,0,0.6); }
@@ -80,12 +76,12 @@
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
-<body>
+<body onclick="playClickSound()"> <audio id="click-sound" src="https://www.soundjay.com/buttons/button-16.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
     <div style="font-weight:bold; color:var(--gold);">SULTAN NEON HUB</div>
     <div class="amount" id="main-income">$2.9624</div>
-    <div style="font-size: 10px; color: #888;">KEYBOARD TOUCH V34.0</div>
+    <div style="font-size: 10px; color: #888;">TIK-TIK V38.0</div>
 </div>
 
 <div class="dashboard-container">
@@ -160,6 +156,13 @@
 </div>
 
 <script>
+    // Awaaz bajane wala function
+    function playClickSound() {
+        let sound = document.getElementById('click-sound');
+        sound.currentTime = 0;
+        sound.play();
+    }
+
     let income = parseFloat(localStorage.getItem('sultan_income')) || 2.9624; 
     function updateDisplay() {
         document.getElementById('main-income').innerText = "$" + income.toFixed(4);
