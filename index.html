@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN 3D HUB V66.0</title>
+    <title>SULTAN FINAL HUB V67.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --deep-blue: #000b29; }
         
-        /* --- 1. THE DEEP BLUE CRYSTAL TABLE (Background) --- */
+        /* --- BACKGROUND --- */
         body { 
             margin: 0; 
             background: radial-gradient(circle at center, #001a4d 0%, #000511 100%);
@@ -17,39 +17,25 @@
             flex-direction: column; height: 100vh; overflow: hidden; 
         }
 
-        /* ٹیبل پر کرسٹل چمک اور ایل ای ڈی */
-        body::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 40, 150, 0.2), transparent 70%);
-            animation: crystalGlow 8s ease infinite alternate;
-            z-index: -1;
-        }
-
-        @keyframes crystalGlow {
-            0% { opacity: 0.6; }
-            100% { opacity: 1; }
-        }
-
         .revenue-header { 
             background: rgba(0,0,0,0.9); border-bottom: 3px solid var(--gold); 
             padding: 12px 20px; display: flex; justify-content: space-between; 
             align-items: center; box-shadow: 0 5px 25px rgba(0, 11, 41, 0.8); z-index: 100; 
         }
 
-        /* --- 2. 3D GAMING ROTATION (Character Spin Style) --- */
+        /* --- 1. PERFECT ROUND 3D FACE ROTATION (No Square) --- */
         .glass-ball-frame {
             width: 85px; height: 85px; position: relative;
             border-radius: 50%; overflow: hidden; border: 2px solid var(--gold);
-            box-shadow: 0 0 20px var(--gold); background: #000;
+            box-shadow: 0 0 20px var(--gold); background: #000; /* کالے بیک گراؤنڈ کے ساتھ مکس */
             perspective: 1000px;
         }
         
-        /* تصویر اب 3D گیم کریکٹر کی طرح گھومے گی */
+        /* تصویر اب مکمل گول ہے اور چہرہ گھوم رہا ہے */
         .character-spin {
             position: absolute; width: 100%; height: 100%;
             background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png') center/cover;
+            border-radius: 50%; /* تصویر کو گول کر دیا */
             z-index: 1;
             animation: gameRotate 6s linear infinite;
             transform-style: preserve-3d;
@@ -68,25 +54,52 @@
 
         .amount { color: #39ff14; font-size: 30px; font-weight: bold; text-shadow: 0 0 15px #39ff14; }
 
-        /* --- 3. CRYSTAL BUTTONS ON BLUE TABLE --- */
+        /* --- 2. GRID & BUTTONS --- */
         .dashboard-container { 
             flex-grow: 1; overflow-y: auto; padding: 25px; 
             display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-            /* ٹیبل کے شیشے کا اثر */
-            background: rgba(0, 11, 41, 0.3);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 11, 41, 0.3); backdrop-filter: blur(5px);
         }
 
         .tile-btn { 
             position: relative; background: var(--crystal-clr); 
-            backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px; padding: 20px; text-decoration: none; color: #fff;
+            backdrop-filter: blur(15px); 
+            
+            /* --- 3. HEAVY RAINBOW MOVING BORDER --- */
+            border: 4px solid transparent; /* موٹی لکیر */
+            border-radius: 25px; 
+            
+            padding: 20px; text-decoration: none; color: #fff;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             height: 140px; transition: 0.4s; overflow: hidden;
             box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 8px 15px rgba(0,0,0,0.4);
         }
+        
+        /* رنگ بدلتی ہوئی موٹی لکیر (شادی کی لائٹیں) */
+        .tile-btn::before {
+            content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            animation: rainbowBorder 8s linear infinite;
+            filter: blur(2px); /* تھوڑی سی چمک */
+        }
+        
+        /* لکیر کے اندر والا حصہ (تاکہ بٹن کا کلر نظر آئے) */
+        .tile-btn::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--crystal-clr);
+            border-radius: 21px;
+            z-index: -1;
+        }
 
-        .tile-btn:hover { transform: translateY(-8px) scale(1.05); border-color: white; box-shadow: 0 0 20px var(--crystal-clr); }
+        @keyframes rainbowBorder {
+            0% { background-position: 0%; }
+            100% { background-position: 400%; }
+        }
+
+        .tile-btn:hover { transform: translateY(-8px) scale(1.05); }
 
         .clr-q { --crystal-clr: rgba(0, 143, 57, 0.5); }
         .clr-w { --crystal-clr: rgba(37, 211, 102, 0.5); }
@@ -108,7 +121,7 @@
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
     </style>
 </head>
-<body onclick="activateAudio()">
+<body onclick="activateAudioEngine()">
 
 <audio id="tuut-sfx" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick-sfx" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
@@ -161,52 +174,52 @@
     </a>
 
     <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-gamepad" style="color:#ff3e3e; font-size:38px;"></i></div>
         <span class="tile-title">Poki Games</span>
     </a>
 
     <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-robot" style="color:#00f2ff; font-size:30px;"></i></div>
         <span class="tile-title">Kling AI</span>
     </a>
 
     <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" style="--crystal-clr:rgba(255,0,255,0.4);" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-video" style="color:#ff00ff; font-size:30px;"></i></div>
         <span class="tile-title">Runway AI</span>
     </a>
 
     <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-cart-shopping" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">AliExpress</span>
     </a>
 
     <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-box" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Alibaba</span>
     </a>
 
     <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-gun" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Epic Games</span>
     </a>
 
     <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-circle-play" style="color:#fff; font-size:38px;"></i></div>
         <span class="tile-title">Y8 Games</span>
     </a>
 
     <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">Pika AI</span>
     </a>
 
     <a href="https://www.bbc.com" target="_blank" class="tile-btn clr-r" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-newspaper" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">BBC News</span>
     </a>
 
     <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseenter="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
+        <div class="icon-circle"><i class="fa-solid fa-headset" style="color:#fff; font-size:35px;"></i></div>
         <span class="tile-title">Crazy Games</span>
     </a>
 </div>
@@ -215,8 +228,12 @@
     const tuut = document.getElementById('tuut-sfx');
     const tick = document.getElementById('tick-sfx');
     
-    function activateAudio() { tuut.play().then(()=>tuut.pause()); tick.play().then(()=>tick.pause()); }
+    // یوزر کے پہلے کلک پر آڈیو انجن کو آن کرنا (براؤزر کی سیکیورٹی کے لیے ضروری ہے)
+    function activateAudioEngine() { tuut.play().then(()=>tuut.pause()); tick.play().then(()=>tick.pause()); }
+    
+    // ٹیوٹ ٹیوٹ آواز (Hover)
     function playTuut() { tuut.currentTime = 0; tuut.play().catch(()=>{}); }
+    // ٹک ٹک آواز (Click)
     function playTick() { tick.currentTime = 0; tick.play().catch(()=>{}); }
 
     let income = parseFloat(localStorage.getItem('sultan_income')) || 19.9840; 
