@@ -64,6 +64,7 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.4);
         }
         
+        /* Rainbow Border */
         .tile-btn::before {
             content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 25px;
@@ -82,25 +83,37 @@
 
         .tile-btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
 
+        /* Specific styles for the New Quran Button */
+        .quran-custom-btn {
+            background-image: url('https://i.postimg.cc/k47v9Hk2/Quran-Alif-19.jpg') !important;
+            background-size: 100% 100% !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border: none !important;
+        }
+
+        /* Overlay to keep text readable on the Quran image */
+        .quran-custom-btn .btn-content {
+            background: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 21px;
+        }
+
         .clr-q { --crystal-clr: rgba(0, 143, 57, 0.6); }
         .clr-w { --crystal-clr: rgba(37, 211, 102, 0.6); }
         .clr-b { --crystal-clr: rgba(13, 71, 161, 0.6); }
         .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
         .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
 
-        /* مستقل حل: تصویر اب ڈائریکٹ بٹن میں پیوستہ ہے */
-        .quran-btn-custom {
-            background-image: url('https://files.catbox.moe/kix9p1.jpg') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-        }
-
         .icon-box { 
-            width: 65px; height: 65px; background: rgba(0,0,0,0.4); border-radius: 50%; 
+            width: 65px; height: 65px; background: #000; border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.3); z-index: 5;
-            backdrop-filter: blur(2px);
+            margin-bottom: 12px; border: 2px solid rgba(255,255,255,0.2); z-index: 5;
         }
 
         .tile-title { font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 5; text-shadow: 2px 2px 4px #000; }
@@ -123,9 +136,11 @@
 </div>
 
 <div class="dashboard-container">
-    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-btn-custom" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#ffd700; font-size:35px;"></i></div>
-        <span class="tile-title">Quran Pak</span>
+    <a href="https://quran.com/ur" target="_blank" class="tile-btn quran-custom-btn" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="btn-content">
+            <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#00ff88; font-size:35px;"></i></div>
+            <span class="tile-title">Quran Pak</span>
+        </div>
     </a>
 
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
