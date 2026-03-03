@@ -33,7 +33,7 @@
         }
         @keyframes gameRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
-        /* Quran in header - CENTER, SUPER LARGE (150% بڑا) */
+        /* Quran in header - SUPER LARGE (150% بڑا) */
         .quran-header-center {
             display: flex;
             align-items: center;
@@ -42,12 +42,12 @@
         }
         .quran-3d-circle-super-large {
             position: relative; 
-            width: 200px;        /* 140px * 1.42 ≈ 200px (تقریباً 150% بڑا) */
+            width: 200px;        /* 140px * 1.43 ≈ 200px */
             height: 200px; 
             border-radius: 50%;
             background: url('https://www.pngmart.com/files/22/Quran-PNG-Photo.png') center/cover no-repeat;
-            border: 6px solid var(--gold);  /* موٹی بارڈر */
-            box-shadow: 0 0 60px var(--gold);  /* زیادہ چمک */
+            border: 6px solid var(--gold);
+            box-shadow: 0 0 60px var(--gold);
             animation: spinLikeWheelOnNail 8s infinite linear; 
             transform-style: preserve-3d;
             display: block;
@@ -122,9 +122,10 @@
         <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">SULTAN EMPIRE</div>
     </div>
 
-    <!-- CENTER: SUPER LARGE QURAN (150% بڑا - 200px) -->
+    <!-- CENTER: SUPER LARGE QURAN - اب اسلام 360 آف لائن ورژن -->
     <div class="quran-header-center">
-        <a href="https://quran.com/ur" target="_blank" class="quran-3d-circle-super-large" onmouseover="playTuut()" onmousedown="playTick()" title="قرآن مجید - اردو ترجمہ"></a>
+        <!-- یہ لنک اسلام 360 کے ڈاؤن لوڈ پیج پر لے جائے گا -->
+        <a href="https://www.islam360.org/download" target="_blank" class="quran-3d-circle-super-large" onmouseover="playTuut()" onmousedown="playTick()" title="اسلام 360 - قرآن، حدیث، ترجمہ - آف لائن استعمال کریں"></a>
     </div>
 
     <!-- Right side: revenue + clock -->
