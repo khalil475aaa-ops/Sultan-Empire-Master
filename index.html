@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SULTAN QURAN FINAL V77.0</title>
+    <title>SULTAN QURAN FINAL V77.0 + POWER TILES</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #ffd700; --deep-blue: #000b29; --neon-green: #39ff14; }
@@ -73,16 +73,21 @@
         }
 
         .amount { color: var(--neon-green); font-size: 30px; font-weight: bold; }
-        .tile-title { font-size: 11px; font-weight: bold; text-shadow: 2px 2px 4px #000; }
+        .tile-title { font-size: 11px; font-weight: bold; text-shadow: 2px 2px 4px #000; text-align: center; }
         
         .clr-w { --crystal-clr: rgba(37, 211, 102, 0.6); }
         .clr-b { --crystal-clr: rgba(13, 71, 161, 0.6); }
         .clr-r { --crystal-clr: rgba(183, 28, 28, 0.6); }
         .clr-g { --crystal-clr: rgba(255, 143, 0, 0.6); }
+        .clr-news { --crystal-clr: rgba(0, 100, 200, 0.7); }
+        .clr-kids { --crystal-clr: rgba(255, 105, 180, 0.7); }
+        .clr-doc { --crystal-clr: rgba(50, 150, 50, 0.7); }
+        .clr-intl { --crystal-clr: rgba(128, 0, 128, 0.7); }
     </style>
 </head>
 <body onclick="initAudio()">
 
+<!-- Mobile keypad tone sound -->
 <audio id="tuut" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
@@ -98,35 +103,100 @@
 </div>
 
 <div class="dashboard-container">
+    <!-- Quran Pak tile (original - پہلے نمبر پر) -->
     <div style="grid-column: span 1; display: flex; justify-content: center; align-items: center;">
         <a href="https://quran.com/ur" target="_blank" class="quran-3d-circle" onmouseover="playTuut()" onmousedown="playTick()"></a>
     </div>
 
+    <!-- === پانچ بنیادی بٹن (قرآن کے بعد) === -->
+    
+    <!-- WhatsApp (پہلا بنیادی) -->
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:35px;"></i></div>
         <span class="tile-title">WhatsApp</span>
     </a>
 
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:35px;"></i></div>
-        <span class="tile-title">Facebook</span>
-    </a>
-
+    <!-- YouTube (دوسرا بنیادی) -->
     <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#ff0000; font-size:35px;"></i></div>
         <span class="tile-title">YouTube</span>
     </a>
 
+    <!-- Facebook (تیسرا بنیادی) -->
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-brands fa-facebook" style="color:#1877f2; font-size:35px;"></i></div>
+        <span class="tile-title">Facebook</span>
+    </a>
+
+    <!-- TikTok (چوتھا بنیادی) -->
     <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-tiktok" style="color:#fff; font-size:30px;"></i></div>
         <span class="tile-title">TikTok</span>
     </a>
 
+    <!-- Google (پانچواں بنیادی) -->
     <a href="https://www.google.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-google" style="color:#4285f4; font-size:30px;"></i></div>
         <span class="tile-title">Google</span>
     </a>
 
+    <!-- === 9 نئے بٹن (بنیادی بٹنوں کے بعد) === -->
+
+    <!-- 1. BBC World News -->
+    <a href="https://www.bbc.com/news/world" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-newspaper" style="color:#ffffff; font-size:35px;"></i></div>
+        <span class="tile-title">BBC World News</span>
+    </a>
+
+    <!-- 2. Al Jazeera English -->
+    <a href="https://www.aljazeera.com/live/" target="_blank" class="tile-btn clr-intl" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-globe" style="color:#ffd700; font-size:35px;"></i></div>
+        <span class="tile-title">Al Jazeera English</span>
+    </a>
+
+    <!-- 3. CNN Live -->
+    <a href="https://edition.cnn.com/live" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-tower-broadcast" style="color:#ff0000; font-size:35px;"></i></div>
+        <span class="tile-title">CNN Live</span>
+    </a>
+
+    <!-- 4. ABC Kids -->
+    <a href="https://iview.abc.net.au/show/kids" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-child" style="color:#ff69b4; font-size:35px;"></i></div>
+        <span class="tile-title">ABC Kids</span>
+    </a>
+
+    <!-- 5. Cocomelon -->
+    <a href="https://www.cocomelon.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-music" style="color:#ffd700; font-size:35px;"></i></div>
+        <span class="tile-title">Cocomelon</span>
+    </a>
+
+    <!-- 6. ChuChu TV -->
+    <a href="https://www.chuchutv.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-train" style="color:#ffa500; font-size:35px;"></i></div>
+        <span class="tile-title">ChuChu TV</span>
+    </a>
+
+    <!-- 7. Disney Junior -->
+    <a href="https://disneynow.com/all-shows/disney-junior" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles" style="color:#87ceeb; font-size:35px;"></i></div>
+        <span class="tile-title">Disney Junior</span>
+    </a>
+
+    <!-- 8. National Geographic -->
+    <a href="https://www.nationalgeographic.com/tv/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-earth-asia" style="color:#ffd700; font-size:35px;"></i></div>
+        <span class="tile-title">National Geographic</span>
+    </a>
+
+    <!-- 9. Discovery International -->
+    <a href="https://www.discoveryplus.com/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
+        <div class="icon-box"><i class="fa-solid fa-dragon" style="color:#ffa500; font-size:35px;"></i></div>
+        <span class="tile-title">Discovery Intl</span>
+    </a>
+
+    <!-- === باقی تمام اصلی بٹن (ان کے بعد) === -->
     <a href="https://www.amazon.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
         <div class="icon-box"><i class="fa-brands fa-amazon" style="color:#ff9900; font-size:30px;"></i></div>
         <span class="tile-title">Amazon</span>
@@ -196,8 +266,19 @@
         }
     }
 
-    function playTuut() { if(ready) { tuut.currentTime = 0; tuut.play(); } }
-    function playTick() { if(ready) { tick.currentTime = 0; tick.play(); } }
+    function playTuut() { 
+        if(ready) { 
+            tuut.currentTime = 0; 
+            tuut.play().catch(() => {}); 
+        } 
+    }
+    
+    function playTick() { 
+        if(ready) { 
+            tick.currentTime = 0; 
+            tick.play().catch(() => {}); 
+        } 
+    }
 
     let count = 19.9840;
     setInterval(() => { count += 0.0004; document.getElementById('rev').innerText = "$" + count.toFixed(4); }, 1000);
