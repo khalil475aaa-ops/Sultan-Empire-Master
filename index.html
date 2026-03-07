@@ -36,28 +36,39 @@
             z-index: 100; 
         }
 
-        /* Sultan Empire image in header */
-        .glass-ball-frame {
-            width: 70px; 
-            height: 70px; 
+        /* Header left side - now with NEW image (same as main tile) */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        .header-spin-golden {
+            width: 70px;
+            height: 70px;
             position: relative;
-            border-radius: 50%; 
-            overflow: hidden; 
+            transform-style: preserve-3d;
+            animation: spinLikeWheelOnNail 8s infinite linear;
+            border-radius: 50%;
             border: 2px solid var(--gold);
-            box-shadow: 0 0 20px var(--gold); 
-            background: #000;
+            box-shadow: 0 0 20px var(--gold);
         }
-        .character-spin {
-            position: absolute; 
-            width: 100%; 
+        .header-golden-face {
+            position: absolute;
+            width: 100%;
             height: 100%;
-            background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png') center/cover;
-            border-radius: 50%; 
-            animation: gameRotate 6s linear infinite;
+            border-radius: 50%;
+            background: url('https://i.ibb.co/YBbshnJ8/unnamed-3.jpg') center/cover no-repeat;
+            backface-visibility: visible;
         }
-        @keyframes gameRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+        .header-golden-front {
+            transform: rotateY(0deg);
+        }
+        .header-golden-back {
+            transform: rotateY(180deg);
+        }
 
-        /* Quran in header - CENTER - بالکل اسی طرح جیسی تھی */
+        /* Quran in header - CENTER */
         .quran-header-center {
             display: flex;
             align-items: center;
@@ -80,7 +91,10 @@
             transform: scale(1.05);
             box-shadow: 0 0 70px var(--gold);
         }
-        @keyframes spinLikeWheelOnNail { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+        @keyframes spinLikeWheelOnNail { 
+            0% { transform: rotateY(0deg); } 
+            100% { transform: rotateY(360deg); } 
+        }
 
         /* Dashboard */
         .dashboard-container { 
@@ -113,7 +127,6 @@
             cursor: pointer;
         }
         
-        /* ہوور پر گھومنے کا اثر */
         .tile-btn:hover .icon-box i {
             animation: iconRotate 0.8s linear infinite;
         }
@@ -127,7 +140,6 @@
             100% { transform: rotateY(360deg); }
         }
 
-        /* باریک سی یلو-اورنج لکیر */
         .tile-btn::after {
             content: '';
             position: absolute;
@@ -141,7 +153,6 @@
             opacity: 0.5;
         }
 
-        /* وائٹ بیک گراؤنڈ والے آئیکون */
         .icon-box { 
             width: 100%; 
             height: 100%; 
@@ -164,7 +175,6 @@
             transition: all 0.3s ease;
         }
 
-        /* انگریزی نام - بٹن کے اندر نیچے */
         .icon-name {
             font-size: 14px;
             font-weight: bold;
@@ -196,7 +206,6 @@
             font-weight: bold;
         }
 
-        /* کلر کلاسز */
         .clr-w i { color: #1a5c1a; }
         .clr-b i { color: #1a4d8c; }
         .clr-r i { color: #b30000; }
@@ -206,12 +215,10 @@
         .clr-doc i { color: #4a1a6c; }
         .clr-intl i { color: #9b7e1a; }
 
-        /* Google - اوریجنل کلر */
         .tile-btn[href*="google.com"] i {
             color: #4285f4 !important;
         }
 
-        /* Amazon - اوریجنل کلر */
         .tile-btn[href*="amazon.com"] i {
             color: #ff9900 !important;
         }
@@ -296,7 +303,30 @@
             font-weight: bold;
         }
         
-        /* موبائل کے لیے */
+        /* Style for Sultan main tile - using the NEW image */
+        .sultan-tile-content {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spinLikeWheelOnNail 8s infinite linear;
+        }
+        .sultan-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('https://i.ibb.co/YBbshnJ8/unnamed-3.jpg') center/cover no-repeat;
+            backface-visibility: visible;
+        }
+        .sultan-front {
+            transform: rotateY(0deg);
+        }
+        .sultan-back {
+            transform: rotateY(180deg);
+        }
+
         @media (max-width: 600px) {
             .quran-3d-circle-super-large {
                 width: 120px;
@@ -318,6 +348,10 @@
                 font-size: 12px;
                 padding: 3px 8px;
             }
+            .header-spin-golden {
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
@@ -328,13 +362,16 @@
 <audio id="tick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
-    <!-- Left side: Sultan Empire with small image -->
+    <!-- Left side: Now with the NEW small image (same as main tile) -->
     <div class="header-left">
-        <div class="glass-ball-frame"><div class="character-spin"></div></div>
+        <div class="header-spin-golden">
+            <div class="header-golden-face header-golden-front"></div>
+            <div class="header-golden-face header-golden-back"></div>
+        </div>
         <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">SULTAN EMPIRE</div>
     </div>
 
-    <!-- CENTER: QURAN - واپس لا دیا -->
+    <!-- CENTER: QURAN -->
     <div class="quran-header-center">
         <a href="https://quran.com/ur" target="_blank" class="quran-3d-circle-super-large" onmouseover="playTuut()" onmousedown="playTick()" title="قرآن مجید - اردو ترجمہ"></a>
     </div>
@@ -347,189 +384,88 @@
 </div>
 
 <div class="dashboard-container">
-    <!-- Sultan Empire tile - CLICK TO OPEN BUSINESS CARD -->
+    <!-- Sultan Empire main tile - with NEW image -->
     <div style="grid-column: span 1; display: flex; justify-content: center; align-items: center;">
-        <div class="tile-btn" onclick="openBusinessCard()" onmouseover="playTuut()" onmousedown="playTick()">
-            <div class="icon-box">
-                <div style="width:100px; height:100px; border-radius:50%; background: url('https://i.postimg.cc/wBgcbZJk/Untitled-Project.png') center/cover; border: 2px solid var(--gold); animation: gameRotate 6s linear infinite; margin-top:15px;"></div>
-                <span class="icon-name">SULTAN</span>
+        <div class="tile-btn" onclick="openBusinessCard()" onmouseover="playTuut()" onmousedown="playTick()" style="background: transparent;">
+            <div class="sultan-tile-content">
+                <div class="sultan-face sultan-front"></div>
+                <div class="sultan-face sultan-back"></div>
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp -->
+    <!-- All other buttons remain exactly the same -->
     <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span class="icon-name">WhatsApp</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-whatsapp"></i><span class="icon-name">WhatsApp</span></div>
     </a>
-
-    <!-- YouTube -->
     <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-youtube"></i>
-            <span class="icon-name">YouTube</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-youtube"></i><span class="icon-name">YouTube</span></div>
     </a>
-
-    <!-- Facebook -->
     <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-facebook"></i>
-            <span class="icon-name">Facebook</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-facebook"></i><span class="icon-name">Facebook</span></div>
     </a>
-
-    <!-- TikTok -->
     <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-tiktok"></i>
-            <span class="icon-name">TikTok</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-tiktok"></i><span class="icon-name">TikTok</span></div>
     </a>
-
-    <!-- Google -->
     <a href="https://www.google.com" target="_blank" class="tile-btn" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-google" style="color: #4285f4 !important;"></i>
-            <span class="icon-name">Google</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-google" style="color: #4285f4 !important;"></i><span class="icon-name">Google</span></div>
     </a>
-
-    <!-- BBC World News -->
     <a href="https://www.bbc.com/news/world" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-newspaper"></i>
-            <span class="icon-name">BBC News</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-newspaper"></i><span class="icon-name">BBC News</span></div>
     </a>
-    
     <a href="https://www.aljazeera.com/live/" target="_blank" class="tile-btn clr-intl" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-globe"></i>
-            <span class="icon-name">Al Jazeera</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-globe"></i><span class="icon-name">Al Jazeera</span></div>
     </a>
-    
     <a href="https://edition.cnn.com/live" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-tower-broadcast"></i>
-            <span class="icon-name">CNN Live</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-tower-broadcast"></i><span class="icon-name">CNN Live</span></div>
     </a>
-    
     <a href="https://iview.abc.net.au/show/kids" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-child"></i>
-            <span class="icon-name">ABC Kids</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-child"></i><span class="icon-name">ABC Kids</span></div>
     </a>
-    
     <a href="https://www.cocomelon.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-music"></i>
-            <span class="icon-name">Cocomelon</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-music"></i><span class="icon-name">Cocomelon</span></div>
     </a>
-    
     <a href="https://www.chuchutv.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-train"></i>
-            <span class="icon-name">ChuChu TV</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-train"></i><span class="icon-name">ChuChu TV</span></div>
     </a>
-    
     <a href="https://disneynow.com/all-shows/disney-junior" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span class="icon-name">Disney Jr</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="icon-name">Disney Jr</span></div>
     </a>
-    
     <a href="https://www.nationalgeographic.com/tv/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-earth-asia"></i>
-            <span class="icon-name">Nat Geo</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-earth-asia"></i><span class="icon-name">Nat Geo</span></div>
     </a>
-    
     <a href="https://www.discoveryplus.com/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-dragon"></i>
-            <span class="icon-name">Discovery</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-dragon"></i><span class="icon-name">Discovery</span></div>
     </a>
-
-    <!-- Amazon -->
     <a href="https://www.amazon.com" target="_blank" class="tile-btn" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-brands fa-amazon" style="color: #ff9900 !important;"></i>
-            <span class="icon-name">Amazon</span>
-        </div>
+        <div class="icon-box"><i class="fa-brands fa-amazon" style="color: #ff9900 !important;"></i><span class="icon-name">Amazon</span></div>
     </a>
-    
     <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-robot"></i>
-            <span class="icon-name">Kling AI</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-robot"></i><span class="icon-name">Kling AI</span></div>
     </a>
-    
     <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-video"></i>
-            <span class="icon-name">Runway AI</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-video"></i><span class="icon-name">Runway AI</span></div>
     </a>
-    
     <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="icon-name">AliExpress</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-cart-shopping"></i><span class="icon-name">AliExpress</span></div>
     </a>
-    
     <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-box"></i>
-            <span class="icon-name">Alibaba</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-box"></i><span class="icon-name">Alibaba</span></div>
     </a>
-    
     <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-gun"></i>
-            <span class="icon-name">Epic Games</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-gun"></i><span class="icon-name">Epic Games</span></div>
     </a>
-    
     <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-circle-play"></i>
-            <span class="icon-name">Y8 Games</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-circle-play"></i><span class="icon-name">Y8 Games</span></div>
     </a>
-    
     <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span class="icon-name">Pika AI</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="icon-name">Pika AI</span></div>
     </a>
-    
     <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-gamepad"></i>
-            <span class="icon-name">Poki</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-gamepad"></i><span class="icon-name">Poki</span></div>
     </a>
-    
     <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
-        <div class="icon-box">
-            <i class="fa-solid fa-headset"></i>
-            <span class="icon-name">Crazy Games</span>
-        </div>
+        <div class="icon-box"><i class="fa-solid fa-headset"></i><span class="icon-name">Crazy Games</span></div>
     </a>
 </div>
 
