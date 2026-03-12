@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SULTAN EMPIRE - WITH QURAN</title>
+    <title>سلطان ایمپائر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { 
-            --gold: #ffd700; 
-            --deep-blue: #000b29; 
+        :root {
+            --gold: #ffd700;
+            --deep-blue: #000b29;
             --neon-green: #39ff14;
             --flame-yellow: #ffff00;
             --flame-orange: #ff8c00;
         }
-        
-        body { 
-            margin: 0; 
+
+        body {
+            margin: 0;
             background: radial-gradient(circle at center, #001a4d 0%, #000511 100%);
-            color: white; 
-            font-family: 'Segoe UI', sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            height: 100vh; 
-            overflow: hidden; 
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .revenue-header { 
-            background: rgba(0,0,0,0.9); 
-            border-bottom: 3px solid var(--gold); 
-            padding: 12px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 5px 25px rgba(0, 11, 41, 0.8); 
-            z-index: 100; 
+        .revenue-header {
+            background: rgba(0,0,0,0.9);
+            border-bottom: 3px solid var(--gold);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 11, 41, 0.8);
+            z-index: 100;
         }
 
-        /* Header left side - now with NEW image (same as main tile) */
         .header-left {
             display: flex;
             align-items: center;
@@ -68,7 +67,6 @@
             transform: rotateY(180deg);
         }
 
-        /* Quran in header - CENTER */
         .quran-header-center {
             display: flex;
             align-items: center;
@@ -76,14 +74,14 @@
             flex: 2;
         }
         .quran-3d-circle-super-large {
-            position: relative; 
+            position: relative;
             width: 160px;
-            height: 160px; 
+            height: 160px;
             border-radius: 50%;
             background: url('https://www.pngmart.com/files/22/Quran-PNG-Photo.png') center/cover no-repeat;
             border: 5px solid var(--gold);
             box-shadow: 0 0 50px var(--gold);
-            animation: spinLikeWheelOnNail 8s infinite linear; 
+            animation: spinLikeWheelOnNail 8s infinite linear;
             display: block;
             transition: all 0.3s ease;
         }
@@ -91,46 +89,45 @@
             transform: scale(1.05);
             box-shadow: 0 0 70px var(--gold);
         }
-        @keyframes spinLikeWheelOnNail { 
-            0% { transform: rotateY(0deg); } 
-            100% { transform: rotateY(360deg); } 
+        @keyframes spinLikeWheelOnNail {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
         }
 
-        /* Dashboard */
-        .dashboard-container { 
-            flex-grow: 1; 
-            overflow-y: auto; 
-            padding: 20px; 
-            display: grid; 
-            gap: 20px; 
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+        .dashboard-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             align-content: start;
         }
 
-        .tile-btn { 
-            position: relative; 
+        .tile-btn {
+            position: relative;
             background: transparent;
             border: none;
-            border-radius: 50%; 
-            width: 180px; 
-            height: 180px; 
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
             margin: 0 auto;
-            text-decoration: none; 
+            text-decoration: none;
             color: #fff;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            transition: all 0.3s ease; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
             overflow: visible;
             z-index: 1;
             cursor: pointer;
         }
-        
+
         .tile-btn:hover .icon-box i {
             animation: iconRotate 0.8s linear infinite;
         }
-        
+
         .tile-btn:hover .icon-box {
             transform: scale(1.02);
         }
@@ -153,15 +150,15 @@
             opacity: 0.5;
         }
 
-        .icon-box { 
-            width: 100%; 
-            height: 100%; 
+        .icon-box {
+            width: 100%;
+            height: 100%;
             background: white;
-            border-radius: 50%; 
-            display: flex; 
+            border-radius: 50%;
+            display: flex;
             flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
             border: none;
             transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(255,255,255,0.5);
@@ -189,20 +186,20 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .tile-title { 
+        .tile-title {
             display: none;
         }
 
-        .amount { 
-            color: var(--neon-green); 
-            font-size: 28px; 
-            font-weight: bold; 
+        .amount {
+            color: var(--neon-green);
+            font-size: 28px;
+            font-weight: bold;
             text-shadow: 0 0 15px var(--neon-green);
         }
-        
-        #clock { 
-            color: var(--gold); 
-            font-size: 14px; 
+
+        #clock {
+            color: var(--gold);
+            font-size: 14px;
             font-weight: bold;
         }
 
@@ -215,95 +212,9 @@
         .clr-doc i { color: #4a1a6c; }
         .clr-intl i { color: #9b7e1a; }
 
-        .tile-btn[href*="google.com"] i {
-            color: #4285f4 !important;
-        }
-
-        .tile-btn[href*="amazon.com"] i {
-            color: #ff9900 !important;
-        }
-
         .header-left { display: flex; align-items: center; gap: 10px; flex: 1; }
         .header-right { text-align: right; flex: 1; }
-        
-        /* Modal for Business Card */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            padding-top: 30px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            overflow: auto;
-        }
-        
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            border: 5px solid var(--gold);
-            border-radius: 20px;
-            box-shadow: 0 0 50px var(--gold);
-        }
-        
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: var(--gold);
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 1001;
-        }
-        
-        .close:hover {
-            color: white;
-            text-shadow: 0 0 20px var(--gold);
-        }
-        
-        .business-card {
-            background: #000b29;
-            padding: 30px;
-            border-radius: 20px;
-            border: 5px solid var(--gold);
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        
-        .business-title {
-            color: var(--gold);
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .business-text {
-            color: white;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        
-        .business-highlight {
-            color: var(--neon-green);
-            font-size: 22px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-        
-        .business-contact {
-            color: #ff8c00;
-            font-size: 24px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        
-        /* Style for Sultan main tile - using the NEW image */
+
         .sultan-tile-content {
             width: 100%;
             height: 100%;
@@ -327,19 +238,48 @@
             transform: rotateY(180deg);
         }
 
+        /* Section dividers */
+        .section-divider {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 18px 0 8px;
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+            text-shadow: 0 0 15px var(--gold);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .section-divider i {
+            font-size: 22px;
+            color: var(--gold);
+        }
+
         @media (max-width: 600px) {
             .quran-3d-circle-super-large {
                 width: 120px;
                 height: 120px;
             }
-            .dashboard-container { 
-                grid-template-columns: repeat(2, 1fr); 
+            .dashboard-container {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
                 padding: 15px;
             }
-            .tile-btn { 
-                width: 150px; 
-                height: 150px; 
+            .tile-btn {
+                width: 150px;
+                height: 150px;
             }
             .icon-box i {
                 font-size: 80px !important;
@@ -352,31 +292,45 @@
                 width: 50px;
                 height: 50px;
             }
+            .section-divider {
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: 12px 0 5px;
+            }
+            .section-divider i {
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .dashboard-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 25px;
+                padding: 30px;
+            }
+            .tile-btn {
+                width: 200px;
+                height: 200px;
+            }
         }
     </style>
 </head>
-<body onclick="initAudio()">
+<body>
 
-<!-- Mobile keypad tone sound -->
 <audio id="tuut" src="https://www.soundjay.com/buttons/button-37.mp3" preload="auto"></audio>
 <audio id="tick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
 <div class="revenue-header">
-    <!-- Left side: Now with the NEW small image (same as main tile) -->
     <div class="header-left">
         <div class="header-spin-golden">
             <div class="header-golden-face header-golden-front"></div>
             <div class="header-golden-face header-golden-back"></div>
         </div>
-        <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">SULTAN EMPIRE</div>
+        <div style="font-weight:bold; color:var(--gold); font-size: 18px; margin-left: 10px;">سلطان ایمپائر</div>
     </div>
-
-    <!-- CENTER: QURAN -->
     <div class="quran-header-center">
-        <a href="https://quran.com/ur" target="_blank" class="quran-3d-circle-super-large" onmouseover="playTuut()" onmousedown="playTick()" title="قرآن مجید - اردو ترجمہ"></a>
+        <a href="https://quran.com/ur" target="_blank" class="quran-3d-circle-super-large" title="قرآن مجید - اردو ترجمہ"></a>
     </div>
-
-    <!-- Right side: revenue + clock -->
     <div class="header-right">
         <div class="amount" id="rev">$19.9840</div>
         <div id="clock" style="color:var(--gold); font-size:12px;">00:00:00</div>
@@ -384,9 +338,10 @@
 </div>
 
 <div class="dashboard-container">
-    <!-- Sultan Empire main tile - with NEW image -->
+
+    <!-- ============ SULTAN EMPIRE MAIN TILE ============ -->
     <div style="grid-column: span 1; display: flex; justify-content: center; align-items: center;">
-        <div class="tile-btn" onclick="openBusinessCard()" onmouseover="playTuut()" onmousedown="playTick()" style="background: transparent;">
+        <div class="tile-btn" style="background: transparent;">
             <div class="sultan-tile-content">
                 <div class="sultan-face sultan-front"></div>
                 <div class="sultan-face sultan-back"></div>
@@ -394,152 +349,523 @@
         </div>
     </div>
 
-    <!-- All other buttons remain exactly the same -->
-    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w" onmouseover="playTuut()" onmousedown="playTick()">
+    <!-- ============ ALL APPS - UNCHANGED ============ -->
+    <a href="https://web.whatsapp.com" target="_blank" class="tile-btn clr-w">
         <div class="icon-box"><i class="fa-brands fa-whatsapp"></i><span class="icon-name">WhatsApp</span></div>
     </a>
-    <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.youtube.com" target="_blank" class="tile-btn clr-r">
         <div class="icon-box"><i class="fa-brands fa-youtube"></i><span class="icon-name">YouTube</span></div>
     </a>
-    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.facebook.com" target="_blank" class="tile-btn clr-b">
         <div class="icon-box"><i class="fa-brands fa-facebook"></i><span class="icon-name">Facebook</span></div>
     </a>
-    <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.tiktok.com" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-brands fa-tiktok"></i><span class="icon-name">TikTok</span></div>
     </a>
-    <a href="https://www.google.com" target="_blank" class="tile-btn" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.google.com" target="_blank" class="tile-btn">
         <div class="icon-box"><i class="fa-brands fa-google" style="color: #4285f4 !important;"></i><span class="icon-name">Google</span></div>
     </a>
-    <a href="https://www.bbc.com/news/world" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.bbc.com/news/world" target="_blank" class="tile-btn clr-news">
         <div class="icon-box"><i class="fa-solid fa-newspaper"></i><span class="icon-name">BBC News</span></div>
     </a>
-    <a href="https://www.aljazeera.com/live/" target="_blank" class="tile-btn clr-intl" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.aljazeera.com/live/" target="_blank" class="tile-btn clr-intl">
         <div class="icon-box"><i class="fa-solid fa-globe"></i><span class="icon-name">Al Jazeera</span></div>
     </a>
-    <a href="https://edition.cnn.com/live" target="_blank" class="tile-btn clr-news" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://edition.cnn.com/live" target="_blank" class="tile-btn clr-news">
         <div class="icon-box"><i class="fa-solid fa-tower-broadcast"></i><span class="icon-name">CNN Live</span></div>
     </a>
-    <a href="https://iview.abc.net.au/show/kids" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://iview.abc.net.au/show/kids" target="_blank" class="tile-btn clr-kids">
         <div class="icon-box"><i class="fa-solid fa-child"></i><span class="icon-name">ABC Kids</span></div>
     </a>
-    <a href="https://www.cocomelon.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.cocomelon.com/" target="_blank" class="tile-btn clr-kids">
         <div class="icon-box"><i class="fa-solid fa-music"></i><span class="icon-name">Cocomelon</span></div>
     </a>
-    <a href="https://www.chuchutv.com/" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.chuchutv.com/" target="_blank" class="tile-btn clr-kids">
         <div class="icon-box"><i class="fa-solid fa-train"></i><span class="icon-name">ChuChu TV</span></div>
     </a>
-    <a href="https://disneynow.com/all-shows/disney-junior" target="_blank" class="tile-btn clr-kids" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://disneynow.com/all-shows/disney-junior" target="_blank" class="tile-btn clr-kids">
         <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="icon-name">Disney Jr</span></div>
     </a>
-    <a href="https://www.nationalgeographic.com/tv/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.nationalgeographic.com/tv/" target="_blank" class="tile-btn clr-doc">
         <div class="icon-box"><i class="fa-solid fa-earth-asia"></i><span class="icon-name">Nat Geo</span></div>
     </a>
-    <a href="https://www.discoveryplus.com/" target="_blank" class="tile-btn clr-doc" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.discoveryplus.com/" target="_blank" class="tile-btn clr-doc">
         <div class="icon-box"><i class="fa-solid fa-dragon"></i><span class="icon-name">Discovery</span></div>
     </a>
-    <a href="https://www.amazon.com" target="_blank" class="tile-btn" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.amazon.com" target="_blank" class="tile-btn">
         <div class="icon-box"><i class="fa-brands fa-amazon" style="color: #ff9900 !important;"></i><span class="icon-name">Amazon</span></div>
     </a>
-    <a href="https://klingai.com" target="_blank" class="tile-btn clr-b" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://klingai.com" target="_blank" class="tile-btn clr-b">
         <div class="icon-box"><i class="fa-solid fa-robot"></i><span class="icon-name">Kling AI</span></div>
     </a>
-    <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://runwayml.com" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-solid fa-video"></i><span class="icon-name">Runway AI</span></div>
     </a>
-    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.aliexpress.com" target="_blank" class="tile-btn clr-r">
         <div class="icon-box"><i class="fa-solid fa-cart-shopping"></i><span class="icon-name">AliExpress</span></div>
     </a>
-    <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.alibaba.com" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-solid fa-box"></i><span class="icon-name">Alibaba</span></div>
     </a>
-    <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.epicgames.com" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-solid fa-gun"></i><span class="icon-name">Epic Games</span></div>
     </a>
-    <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.y8.com" target="_blank" class="tile-btn clr-r">
         <div class="icon-box"><i class="fa-solid fa-circle-play"></i><span class="icon-name">Y8 Games</span></div>
     </a>
-    <a href="https://pika.art" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://pika.art" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="icon-name">Pika AI</span></div>
     </a>
-    <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.poki.com" target="_blank" class="tile-btn clr-r">
         <div class="icon-box"><i class="fa-solid fa-gamepad"></i><span class="icon-name">Poki</span></div>
     </a>
-    <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g" onmouseover="playTuut()" onmousedown="playTick()">
+    <a href="https://www.crazygames.com" target="_blank" class="tile-btn clr-g">
         <div class="icon-box"><i class="fa-solid fa-headset"></i><span class="icon-name">Crazy Games</span></div>
     </a>
-</div>
 
-<!-- Modal for Business Card -->
-<div id="businessModal" class="modal">
-    <span class="close" onclick="closeBusinessCard()">&times;</span>
-    <div class="business-card">
-        <div class="business-title">👑 SULTAN EMPIRE 👑</div>
-        <div class="business-text">
-            <p style="font-size:28px; color:var(--gold);">TURN YOUR VISION INTO REALITY</p>
-            <p style="font-size:24px; color:#ff8c00;">BECOME THE SULTAN OF THE DIGITAL WORLD!</p>
-            <p>We don't just build apps; we build a complete digital ecosystem for your brand. All from one place: your own app and your own page, with WhatsApp, YouTube, Facebook, TikTok. Highest standard, unparalleled performance: we provide fully customized software that fits your exact needs.</p>
-            <p class="business-highlight">FOR CUSTOMER SERVICE, WHERE THE WORLD STOPS THINKING, WE START OUR WORK</p>
-            <p>Challenge us with your vision - We deliver your digital reality</p>
-        </div>
-        <div class="business-contact">
-            📞 Contact WhatsApp: 0305-8729411 (Message only)<br>
-            Just one message from you can change your business fortunes
-        </div>
-    </div>
+    <!-- ============ SOCIAL MEDIA ============ -->
+    <div class="section-divider"><i class="fa-solid fa-share-nodes"></i> SOCIAL MEDIA</div>
+
+    <a href="https://www.instagram.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-instagram" style="color:#E4405F !important;"></i><span class="icon-name">Instagram</span></div>
+    </a>
+    <a href="https://www.snapchat.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-snapchat" style="color:#FFFC00 !important;"></i><span class="icon-name">Snapchat</span></div>
+    </a>
+    <a href="https://x.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-x-twitter" style="color:#000 !important;"></i><span class="icon-name">X / Twitter</span></div>
+    </a>
+    <a href="https://web.telegram.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-telegram" style="color:#0088cc !important;"></i><span class="icon-name">Telegram</span></div>
+    </a>
+    <a href="https://www.linkedin.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-linkedin" style="color:#0A66C2 !important;"></i><span class="icon-name">LinkedIn</span></div>
+    </a>
+    <a href="https://www.pinterest.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-pinterest" style="color:#E60023 !important;"></i><span class="icon-name">Pinterest</span></div>
+    </a>
+    <a href="https://www.reddit.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-reddit" style="color:#FF4500 !important;"></i><span class="icon-name">Reddit</span></div>
+    </a>
+    <a href="https://discord.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-discord" style="color:#5865F2 !important;"></i><span class="icon-name">Discord</span></div>
+    </a>
+
+    <!-- ============ AI TOOLS ============ -->
+    <div class="section-divider"><i class="fa-solid fa-brain"></i> AI TOOLS</div>
+
+    <a href="https://poe.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-bolt" style="color:#6B4EFF !important;"></i><span class="icon-name">Poe AI</span></div>
+    </a>
+    <a href="https://chat.openai.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-comment-dots" style="color:#10A37F !important;"></i><span class="icon-name">ChatGPT</span></div>
+    </a>
+    <a href="https://gemini.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-gem" style="color:#4285F4 !important;"></i><span class="icon-name">Gemini</span></div>
+    </a>
+    <a href="https://chat.deepseek.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-magnifying-glass-chart" style="color:#1a73e8 !important;"></i><span class="icon-name">DeepSeek</span></div>
+    </a>
+    <a href="https://claude.ai" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-robot" style="color:#D97757 !important;"></i><span class="icon-name">Claude AI</span></div>
+    </a>
+    <a href="https://www.perplexity.ai" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-circle-question" style="color:#20808D !important;"></i><span class="icon-name">Perplexity</span></div>
+    </a>
+    <a href="https://copilot.microsoft.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-microsoft" style="color:#0078D4 !important;"></i><span class="icon-name">Copilot</span></div>
+    </a>
+    <a href="https://huggingface.co" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-face-smile" style="color:#FFD21E !important;"></i><span class="icon-name">Hugging Face</span></div>
+    </a>
+    <a href="https://www.midjourney.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-palette" style="color:#0D1117 !important;"></i><span class="icon-name">Midjourney</span></div>
+    </a>
+    <a href="https://leonardo.ai" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-paintbrush" style="color:#8B5CF6 !important;"></i><span class="icon-name">Leonardo AI</span></div>
+    </a>
+    <a href="https://stability.ai" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-image" style="color:#A855F7 !important;"></i><span class="icon-name">Stable Diffusion</span></div>
+    </a>
+
+    <!-- ============ MAJOR GAMING ============ -->
+    <div class="section-divider"><i class="fa-solid fa-gamepad"></i> GAMING - MAJOR PLATFORMS</div>
+
+    <a href="https://store.steampowered.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-steam" style="color:#1B2838 !important;"></i><span class="icon-name">Steam</span></div>
+    </a>
+    <a href="https://www.roblox.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-cube" style="color:#E2231A !important;"></i><span class="icon-name">Roblox</span></div>
+    </a>
+    <a href="https://www.minecraft.net" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-cubes" style="color:#62B47A !important;"></i><span class="icon-name">Minecraft</span></div>
+    </a>
+    <a href="https://www.xbox.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-xbox" style="color:#107C10 !important;"></i><span class="icon-name">Xbox</span></div>
+    </a>
+    <a href="https://www.playstation.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-playstation" style="color:#003087 !important;"></i><span class="icon-name">PlayStation</span></div>
+    </a>
+    <a href="https://www.nintendo.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-n" style="color:#E60012 !important;"></i><span class="icon-name">Nintendo</span></div>
+    </a>
+    <a href="https://www.ea.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-futbol" style="color:#1A1A2E !important;"></i><span class="icon-name">EA Games</span></div>
+    </a>
+    <a href="https://www.riotgames.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-shield-halved" style="color:#D32936 !important;"></i><span class="icon-name">Riot Games</span></div>
+    </a>
+    <a href="https://www.blizzard.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-snowflake" style="color:#00AEFF !important;"></i><span class="icon-name">Blizzard</span></div>
+    </a>
+
+    <!-- ============ MOBILE / CASUAL GAMING ============ -->
+    <div class="section-divider"><i class="fa-solid fa-mobile-screen"></i> MOBILE & CASUAL GAMES</div>
+
+    <a href="https://play.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-google-play" style="color:#34A853 !important;"></i><span class="icon-name">Google Play</span></div>
+    </a>
+    <a href="https://www.apple.com/app-store/" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-app-store" style="color:#0D96F6 !important;"></i><span class="icon-name">App Store</span></div>
+    </a>
+    <a href="https://www.miniclip.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-table-tennis-paddle-ball" style="color:#F7941D !important;"></i><span class="icon-name">Miniclip</span></div>
+    </a>
+    <a href="https://www.friv.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-puzzle-piece" style="color:#FF6B35 !important;"></i><span class="icon-name">Friv</span></div>
+    </a>
+    <a href="https://kizi.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-ghost" style="color:#6C3483 !important;"></i><span class="icon-name">Kizi</span></div>
+    </a>
+    <a href="https://armorgames.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-chess-knight" style="color:#C0392B !important;"></i><span class="icon-name">Armor Games</span></div>
+    </a>
+    <a href="https://www.newgrounds.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-bomb" style="color:#FFC600 !important;"></i><span class="icon-name">Newgrounds</span></div>
+    </a>
+    <a href="https://gamejolt.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-bolt-lightning" style="color:#2F7F6F !important;"></i><span class="icon-name">GameJolt</span></div>
+    </a>
+    <a href="https://itch.io" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-itch-io" style="color:#FA5C5C !important;"></i><span class="icon-name">Itch.io</span></div>
+    </a>
+    <a href="https://iogames.space" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-earth-americas" style="color:#00BCD4 !important;"></i><span class="icon-name">IO Games</span></div>
+    </a>
+    <a href="https://www.1001games.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-dice" style="color:#FF5722 !important;"></i><span class="icon-name">1001 Games</span></div>
+    </a>
+    <a href="https://www.silvergames.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-trophy" style="color:#9E9E9E !important;"></i><span class="icon-name">Silvergames</span></div>
+    </a>
+    <a href="https://gameflare.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-fire" style="color:#FF6F00 !important;"></i><span class="icon-name">GameFlare</span></div>
+    </a>
+    <a href="https://www.addictinggames.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-face-grin-stars" style="color:#7B1FA2 !important;"></i><span class="icon-name">Addicting Games</span></div>
+    </a>
+
+    <!-- ============ PAKISTAN NEWS - کام کرنے والے ============ -->
+    <div class="section-divider"><i class="fa-solid fa-tv"></i> PAKISTAN NEWS 🇵🇰 (چلنے والے)</div>
+
+    <a href="https://www.youtube.com/watch?v=H9h2oajpN24" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Geo News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=3ayV4yNc7Rk" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">ARY News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=HF0Vq1G5mN8" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Dunya News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=GSTdTZ9oQ-k" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Express News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=XsZ-2ESy9BM" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Samaa TV</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=K0MNss1p-1w" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">BOL News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=K1eKoPWB6AA" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Hum News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=Y71VXswZvCk" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">92 News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=S5d-wMZ90Xo" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Dawn News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=W8yqR3uWTh4" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">PTV News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=JYQO_hW9RUM" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Aaj News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=Uy8MhJbAk1U" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">GNN News</span></div>
+    </a>
+
+    <!-- ============ INDIA NEWS - کام کرنے والے ============ -->
+    <div class="section-divider"><i class="fa-solid fa-tv"></i> INDIA NEWS 🇮🇳 (چلنے والے)</div>
+
+    <a href="https://www.youtube.com/watch?v=7EUnqL0NQ0M" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">NDTV</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=lZGYx_kmzUA" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">India Today</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=HtYjSpmJ1pU" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">WION</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=RBr0d2bGpp8" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">News18</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=J_slT8O1e8A" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Times Now</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=C3d7lATq0u4" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Aaj Tak</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=2p8K9TkcSvs" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">ABP News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=75_vwY8bB44" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">India TV</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=oU1P4G8Bp5M" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Zee News</span></div>
+    </a>
+
+    <!-- ============ INTERNATIONAL NEWS - کام کرنے والے ============ -->
+    <div class="section-divider"><i class="fa-solid fa-earth-americas"></i> INTERNATIONAL NEWS (چلنے والے)</div>
+
+    <a href="https://www.youtube.com/watch?v=9Auq9mYxFEE" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">Sky News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=VV8ucMpNbxk" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">France 24</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=AGwsEuTDrvM" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">DW News</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=VU_yJXq5U6w" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">TRT World</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=4W4e3d4m48c" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-youtube" style="color:#FF0000 !important;"></i><span class="icon-name">NHK World</span></div>
+    </a>
+
+    <!-- ============ ENTERTAINMENT & STREAMING ============ -->
+    <div class="section-divider"><i class="fa-solid fa-film"></i> ENTERTAINMENT & STREAMING</div>
+
+    <a href="https://www.netflix.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-clapperboard" style="color:#E50914 !important;"></i><span class="icon-name">Netflix</span></div>
+    </a>
+    <a href="https://open.spotify.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-spotify" style="color:#1DB954 !important;"></i><span class="icon-name">Spotify</span></div>
+    </a>
+    <a href="https://soundcloud.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-soundcloud" style="color:#FF5500 !important;"></i><span class="icon-name">SoundCloud</span></div>
+    </a>
+    <a href="https://www.twitch.tv" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-twitch" style="color:#9146FF !important;"></i><span class="icon-name">Twitch</span></div>
+    </a>
+    <a href="https://www.dailymotion.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-play" style="color:#0066DC !important;"></i><span class="icon-name">Dailymotion</span></div>
+    </a>
+    <a href="https://vimeo.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-vimeo-v" style="color:#1AB7EA !important;"></i><span class="icon-name">Vimeo</span></div>
+    </a>
+    <a href="https://www.imdb.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-imdb" style="color:#F5C518 !important;"></i><span class="icon-name">IMDb</span></div>
+    </a>
+    <a href="https://www.crunchyroll.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-masks-theater" style="color:#F47521 !important;"></i><span class="icon-name">Crunchyroll</span></div>
+    </a>
+    <a href="https://tubitv.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-film" style="color:#FA382F !important;"></i><span class="icon-name">Tubi (Free)</span></div>
+    </a>
+    <a href="https://pluto.tv" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-meteor" style="color:#000 !important;"></i><span class="icon-name">Pluto TV (Free)</span></div>
+    </a>
+
+    <!-- ============ QURAN & ISLAMIC ============ -->
+    <div class="section-divider"><i class="fa-solid fa-book-quran"></i> QURAN & ISLAMIC</div>
+
+    <a href="https://quran.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-book-quran" style="color:#1B5E20 !important;"></i><span class="icon-name">Quran.com</span></div>
+    </a>
+    <a href="https://sunnah.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-book-open" style="color:#4E342E !important;"></i><span class="icon-name">Sunnah.com</span></div>
+    </a>
+    <a href="https://www.islamicfinder.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-mosque" style="color:#2E7D32 !important;"></i><span class="icon-name">IslamicFinder</span></div>
+    </a>
+    <a href="https://tanzil.net" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-star-and-crescent" style="color:#1B5E20 !important;"></i><span class="icon-name">Tanzil.net</span></div>
+    </a>
+    <a href="https://www.quranexplorer.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-magnifying-glass" style="color:#006064 !important;"></i><span class="icon-name">QuranExplorer</span></div>
+    </a>
+    <a href="https://www.muslimpro.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-moon" style="color:#004D40 !important;"></i><span class="icon-name">Muslim Pro</span></div>
+    </a>
+    <a href="https://en.islamway.net" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-kaaba" style="color:#3E2723 !important;"></i><span class="icon-name">IslamWay</span></div>
+    </a>
+    <a href="https://bayyinah.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-graduation-cap" style="color:#1A237E !important;"></i><span class="icon-name">Bayyinah</span></div>
+    </a>
+
+    <!-- ============ EDUCATION ============ -->
+    <div class="section-divider"><i class="fa-solid fa-graduation-cap"></i> EDUCATION</div>
+
+    <a href="https://www.wikipedia.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-wikipedia-w" style="color:#000 !important;"></i><span class="icon-name">Wikipedia</span></div>
+    </a>
+    <a href="https://www.khanacademy.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-chalkboard-user" style="color:#14BF96 !important;"></i><span class="icon-name">Khan Academy</span></div>
+    </a>
+    <a href="https://www.coursera.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-user-graduate" style="color:#0056D2 !important;"></i><span class="icon-name">Coursera</span></div>
+    </a>
+    <a href="https://www.duolingo.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-language" style="color:#58CC02 !important;"></i><span class="icon-name">Duolingo</span></div>
+    </a>
+    <a href="https://www.udemy.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-video" style="color:#A435F0 !important;"></i><span class="icon-name">Udemy</span></div>
+    </a>
+    <a href="https://www.edx.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-award" style="color:#02262B !important;"></i><span class="icon-name">edX</span></div>
+    </a>
+
+    <!-- ============ PRODUCTIVITY & TOOLS ============ -->
+    <div class="section-divider"><i class="fa-solid fa-wrench"></i> PRODUCTIVITY & TOOLS</div>
+
+    <a href="https://www.canva.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-pen-nib" style="color:#00C4CC !important;"></i><span class="icon-name">Canva</span></div>
+    </a>
+    <a href="https://github.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-github" style="color:#181717 !important;"></i><span class="icon-name">GitHub</span></div>
+    </a>
+    <a href="https://www.figma.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-figma" style="color:#F24E1E !important;"></i><span class="icon-name">Figma</span></div>
+    </a>
+    <a href="https://zoom.us" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-video" style="color:#2D8CFF !important;"></i><span class="icon-name">Zoom</span></div>
+    </a>
+    <a href="https://maps.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-map-location-dot" style="color:#34A853 !important;"></i><span class="icon-name">Google Maps</span></div>
+    </a>
+    <a href="https://mail.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-envelope" style="color:#EA4335 !important;"></i><span class="icon-name">Gmail</span></div>
+    </a>
+    <a href="https://drive.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-google-drive" style="color:#4285F4 !important;"></i><span class="icon-name">Google Drive</span></div>
+    </a>
+    <a href="https://www.office.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-microsoft" style="color:#D83B01 !important;"></i><span class="icon-name">MS Office</span></div>
+    </a>
+    <a href="https://www.dropbox.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-dropbox" style="color:#0061FF !important;"></i><span class="icon-name">Dropbox</span></div>
+    </a>
+
+    <!-- ============ SHOPPING ============ -->
+    <div class="section-divider"><i class="fa-solid fa-bag-shopping"></i> SHOPPING</div>
+
+    <a href="https://www.ebay.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-ebay" style="color:#E53238 !important;"></i><span class="icon-name">eBay</span></div>
+    </a>
+    <a href="https://www.walmart.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-store" style="color:#0071CE !important;"></i><span class="icon-name">Walmart</span></div>
+    </a>
+    <a href="https://www.daraz.pk" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-basket-shopping" style="color:#F85606 !important;"></i><span class="icon-name">Daraz PK</span></div>
+    </a>
+    <a href="https://www.flipkart.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-tags" style="color:#2874F0 !important;"></i><span class="icon-name">Flipkart</span></div>
+    </a>
+    <a href="https://www.etsy.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-etsy" style="color:#F1641E !important;"></i><span class="icon-name">Etsy</span></div>
+    </a>
+    <a href="https://www.shein.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-shirt" style="color:#000 !important;"></i><span class="icon-name">Shein</span></div>
+    </a>
+
+    <!-- ============ UTILITY ============ -->
+    <div class="section-divider"><i class="fa-solid fa-toolbox"></i> UTILITY</div>
+
+    <a href="https://weather.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-cloud-sun" style="color:#1E88E5 !important;"></i><span class="icon-name">Weather</span></div>
+    </a>
+    <a href="https://www.speedtest.net" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-gauge-high" style="color:#1C1C3A !important;"></i><span class="icon-name">Speedtest</span></div>
+    </a>
+    <a href="https://translate.google.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-language" style="color:#4285F4 !important;"></i><span class="icon-name">Translate</span></div>
+    </a>
+
+    <!-- ============ MORE PLATFORMS ============ -->
+    <div class="section-divider"><i class="fa-solid fa-globe"></i> MORE PLATFORMS</div>
+
+    <a href="https://stackoverflow.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-stack-overflow" style="color:#F48024 !important;"></i><span class="icon-name">Stack Overflow</span></div>
+    </a>
+    <a href="https://medium.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-medium" style="color:#000 !important;"></i><span class="icon-name">Medium</span></div>
+    </a>
+    <a href="https://www.quora.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-brands fa-quora" style="color:#B92B27 !important;"></i><span class="icon-name">Quora</span></div>
+    </a>
+    <a href="https://archive.org" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-building-columns" style="color:#428BCA !important;"></i><span class="icon-name">Archive.org</span></div>
+    </a>
+    <a href="https://giphy.com" target="_blank" class="tile-btn">
+        <div class="icon-box"><i class="fa-solid fa-icons" style="color:#FF6666 !important;"></i><span class="icon-name">Giphy</span></div>
+    </a>
+
 </div>
 
 <script>
-    const tuut = document.getElementById('tuut');
-    const tick = document.getElementById('tick');
-    let ready = false;
+    var tuut = document.getElementById('tuut');
+    var tick = document.getElementById('tick');
+    var ready = false;
 
-    function initAudio() {
-        if(!ready) {
-            tuut.play().then(() => { tuut.pause(); tuut.currentTime = 0; });
-            tick.play().then(() => { tick.pause(); tick.currentTime = 0; });
+    document.body.addEventListener('click', function initAudio() {
+        if (!ready) {
+            tuut.play().then(function() { tuut.pause(); tuut.currentTime = 0; }).catch(function() {});
+            tick.play().then(function() { tick.pause(); tick.currentTime = 0; }).catch(function() {});
             ready = true;
         }
-    }
+    }, { once: true });
 
-    function playTuut() { 
-        if(ready) { 
-            tuut.currentTime = 0; 
-            tuut.play().catch(() => {}); 
-        } 
-    }
-    
-    function playTick() { 
-        if(ready) { 
-            tick.currentTime = 0; 
-            tick.play().catch(() => {}); 
-        } 
-    }
-
-    let count = 19.9840;
-    setInterval(() => { count += 0.0004; document.getElementById('rev').innerText = "$" + count.toFixed(4); }, 1000);
-    
-    setInterval(() => {
-        const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString();
-    }, 1000);
-
-    // Function to open business card
-    function openBusinessCard() {
-        playTick();
-        document.getElementById('businessModal').style.display = 'block';
-    }
-    
-    function closeBusinessCard() {
-        document.getElementById('businessModal').style.display = 'none';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        var modal = document.getElementById('businessModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
+    function playTuut() {
+        if (ready) {
+            tuut.currentTime = 0;
+            tuut.play().catch(function() {});
         }
     }
+
+    function playTick() {
+        if (ready) {
+            tick.currentTime = 0;
+            tick.play().catch(function() {});
+        }
+    }
+
+    document.querySelectorAll('.tile-btn').forEach(function(btn) {
+        btn.addEventListener('mouseenter', playTuut);
+        btn.addEventListener('touchstart', playTuut, { passive: true });
+        btn.addEventListener('mousedown', playTick);
+    });
+
+    var count = 19.9840;
+    setInterval(function() { count += 0.0004; document.getElementById('rev').innerText = "$" + count.toFixed(4); }, 1000);
+
+    setInterval(function() {
+        var now = new Date();
+        document.getElementById('clock').innerText = now.toLocaleTimeString();
+    }, 1000);
 </script>
 </body>
 </html>
